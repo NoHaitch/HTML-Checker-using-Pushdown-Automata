@@ -944,6 +944,107 @@ Q21 </tr> </tr> Q20 eps
 #====== </table>
 Q20 </table> </table> Q4 eps
 
+#====== <link rel="" href=""> 
+# State Q23
+# z = rel
+# y = href
+Q23 <link Z3 Q23 M_z_y>Z3
+Q23 <link Z3 Q23 _z_yM>Z3
+Q23 <link Z3 Q23 _zM_y>Z3
+Q23 _ _ Q23 _
+Q23 _ _ Q23 eps
+Q23 eps y Q23 eps
+Q23 eps M Q23 eps
+Q23 > > Q4 eps
+Q23 % X Q23 X   
+Q23 eps X Q23 eps
+#========= rel=""
+Q23 rel=" z Q23 X"
+Q23 " " Q23 eps
+#============ href=""
+Q23 href=" Q23 X"
+Q23 " " Q23 eps
+
+# global atribut link
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q23 _ M Q23 P
+Q23 _ M Q23 Q
+Q23 _ M Q23 R
+Q23 _ M Q23 P_Q
+Q23 _ M Q23 P_R
+Q23 _ M Q23 Q_P
+Q23 _ M Q23 Q_R
+Q23 _ M Q23 R_P
+Q23 _ M Q23 R_Q
+Q23 _ M Q23 P_Q_R
+Q23 _ M Q23 P_R_Q
+Q23 _ M Q23 Q_P_R
+Q23 _ M Q23 Q_R_P
+Q23 _ M Q23 R_P_Q
+Q23 _ M Q23 R_Q_P
+Q23 _ _ Q23 _
+Q23 _ _ Q23 eps
+#=== id=""
+Q23 id=" P Q23 X"
+Q23 " " Q23 eps
+#=== class=""
+Q23 class=" Q Q23 X"
+#=== style=""
+Q23 style=" R Q23 X"
+
+#====== <script src="">
+# state Q24
+# w = src
+Q2 <script Z3 Q24 _wM>X</script>Z3
+Q2 <script Z3 Q24 M_w>X</script>Z3
+Q24 _ _ Q24 _
+Q24 _ _ Q24 eps
+Q24 eps M Q24 eps
+Q24 > > Q2 eps
+Q24 % X Q24 X 
+Q24 eps X Q24 eps
+#========= src=""
+Q24 src=" w Q24 X"
+Q24 " " Q24 eps
+Q24 % X Q24 X
+Q24 eps X Q24 eps
+
+# global atribut script
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q24 _ M Q24 P
+Q24 _ M Q24 Q
+Q24 _ M Q24 R
+Q24 _ M Q24 P_Q
+Q24 _ M Q24 P_R
+Q24 _ M Q24 Q_P
+Q24 _ M Q24 Q_R
+Q24 _ M Q24 R_P
+Q24 _ M Q24 R_Q
+Q24 _ M Q24 P_Q_R
+Q24 _ M Q24 P_R_Q
+Q24 _ M Q24 Q_P_R
+Q24 _ M Q24 Q_R_P
+Q24 _ M Q24 R_P_Q
+Q24 _ M Q24 R_Q_P
+Q24 _ _ Q24 _
+Q24 _ _ Q24 eps
+#=== id=""
+Q24 id=" P Q24 X"
+Q24 " " Q24 eps
+#=== class=""
+Q24 class=" Q Q24 X"
+#=== style=""
+Q24 style=" R Q24 X"
+
+#====== </script>
+Q24 </script> </script> Q2 eps
+
 #=== </body>
 Q4 </body> </body> Q1 eps
 
