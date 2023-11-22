@@ -1,10 +1,10 @@
-Z0 = START_STATE_PROGRAM
+Z = START_STATE_PROGRAM
 Z1 = Head tag
 Z2 = Body tag
 Z3 = inside Head tag
 Z4 = inside Body tag
 
-Q0 = start state with no HTML tag
+Q = start state with no HTML tag
 Q1 = HTML tag
 Q2 = head tag
 Q3 = body tag
@@ -60,26 +60,36 @@ eps = epsilon
 _ = spasi
 % = Sigma
 
+# Start State Q
+# Start Stack Z
+
 # <html>
-Q0 < Z0 Q0 hZ1Z2A
-Q0 h h Q0 t
-Q0 t t Q0 m
-Q0 m m Q0 l
-Q0 l l Q0 >
-Q0 > > Q1 eps
+# STATE Q
+# A = </html>
+# Z1 = head
+# Z2 = body
+Q < Z Q aZ1Z2A
+Q h h Q t
+Q t t Q m
+Q m m Q l
+Q l l Q >
+Q > > Q1 eps
 
 #=== <head>
+# STATE Q1
+# B = </html>
+# Z2 = inside head tag
 Q1 < Z1 Q1 hZ3B
 Q1 h h Q1 e
 Q1 e e Q1 a
 Q1 a a Q1 d
 Q1 d d Q1 >
 Q1 > > Q2 eps
-
-#====== dalam tag <head>
 Q2 eps Z3 Q2 eps
 
 #====== <title>
+# Z3 = inside head tag
+# D = </title>
 Q2 < Z3 Q2 tXDZ3
 Q2 t t Q2 i
 Q2 i i Q2 t
@@ -91,7 +101,7 @@ Q2 eps X Q2 eps
 
 #====== </title>
 Q2 < D Q2 /
-Q2 / /Q2 t
+Q2 / / Q2 t
 Q2 t t Q2 i
 Q2 i i Q2 t
 Q2 t t Q2 l
@@ -100,58 +110,59 @@ Q2 e e Q2 >
 Q2 > > Q2 eps
 
 #====== <link rel="" href=""> 
-Q2 < Z3 Q5 l_z_y>Z3
-Q2 < Z3 Q5 l_y_z>Z3
-Q5 l l Q5 i
-Q5 i i Q5 n
-Q5 n n Q5 k
+# State Q5
+# z = rel
+# y = href
+Q2 < Z3 Q5 link_z_y>Z3
+Q2 < Z3 Q5 link_y_z>Z3
+Q5 l l Q5 eps
+Q5 i i Q5 eps
+Q5 n n Q5 eps
 Q5 k k Q5 eps
 Q5 _ _ Q5 _
 Q5 _ _ Q5 eps
-#========= endpoint
 Q5 eps y Q5 eps
 Q5 > > Q2 eps
-Q5 % X Q5 X     # untuk isi dari href/rel
+Q5 % X Q5 X   
 Q5 eps X Q5 eps
 #========= rel=""
-Q5 r z Q5 r
-Q5 r r Q5 e
-Q5 e e Q5 l
-Q5 l l Q5 =
+Q5 r z Q5 el=
+Q5 e e Q5 eps
 Q5 = = Q5 "X"
 Q5 " " Q5 eps
 #============ href=""
-Q5 h y Q5 r
-Q5 r r Q5 e
-Q5 e e Q5 f
+Q5 h y Q5 ref
+Q5 r r Q5 eps
+Q5 e e Q5 eps
 Q5 f f Q5 =
 Q5 = = Q5 "X"
 Q5 " " Q5 eps
 
 #====== <script src="">
-Q2 < Z3 Q6 s_w>XFZ3
-Q6 s s Q6 c
+# state Q6
+# w = src
+# A = </script>
+Q2 < Z3 Q6 s_w>XAZ3
+Q6 s s Q6 cri
 Q6 c c Q6 r
-Q6 r r Q6 i
+Q6 r r Q6 eps
 Q6 i i Q6 p
 Q6 p p Q6 t
 Q6 t t Q6 eps
 Q6 _ _ Q6 _
 Q6 _ _ Q6 eps
-#========= endpoint 
 Q6 eps y Q6 eps
 Q6 > > Q2 eps
-Q6 % X Q6 X     # untuk isi dari src
+Q6 % X Q6 X 
 Q6 eps X Q6 eps
 #========= src=""
-Q6 s w Q6 r
-Q6 r r Q6 c
+Q6 s w Q6 rc
 Q6 c c Q6 =
 Q6 = = Q6 "X"
 Q6 " " Q6 eps
 
 #====== </script>
-Q6 < Z3 Q6 /
+Q6 < A Q6 /
 Q6 / / Q6 s
 Q6 s s Q6 c
 Q6 c c Q6 r
@@ -593,4 +604,9 @@ Q1 h h Q1 t
 Q1 t t Q1 m
 Q1 m m Q1 l
 Q1 l l Q1 >
-Q1 > > Q0 eps
+Q1 > > Q eps
+
+html
+head
+title
+body
