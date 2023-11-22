@@ -1,0 +1,1052 @@
+# Start State Q
+# Start Stack Z
+
+# <html>
+# STATE Q
+# Z1 = head
+# Z2 = body
+# M global atribut
+Q <html Z Q M>Z1Z2</html>
+Q eps M Q eps
+Q > > Q1 eps
+
+# global atribut html 
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q _ M Q P
+Q _ M Q Q
+Q _ M Q R
+Q _ M Q P_Q
+Q _ M Q P_R
+Q _ M Q Q_P
+Q _ M Q Q_R
+Q _ M Q R_P
+Q _ M Q R_Q
+Q _ M Q P_Q_R
+Q _ M Q P_R_Q
+Q _ M Q Q_P_R
+Q _ M Q Q_R_P
+Q _ M Q R_P_Q
+Q _ M Q R_Q_P
+Q _ _ Q eps
+Q _ _ Q _
+#=== id=""
+Q id=" P Q X"
+Q % X Q X
+Q eps X Q eps
+Q " " Q eps
+#=== class=""
+Q class=" Q Q X"
+#=== style=""
+Q style=" R Q X"
+
+#=== <head>
+# STATE Q1
+# Z3 = inside head html tag
+# M = global atribut
+Q1 <head Z1 Q1 M>Z3</head>
+Q1 eps M Q1 eps
+Q1 > > Q2 eps
+Q2 eps Z3 Q2 eps
+
+# global atribut head
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q1 _ M Q1 P
+Q1 _ M Q1 Q
+Q1 _ M Q1 R
+Q1 _ M Q1 P_Q
+Q1 _ M Q1 P_R
+Q1 _ M Q1 Q_P
+Q1 _ M Q1 Q_R
+Q1 _ M Q1 R_P
+Q1 _ M Q1 R_Q
+Q1 _ M Q1 P_Q_R
+Q1 _ M Q1 P_R_Q
+Q1 _ M Q1 Q_P_R
+Q1 _ M Q1 Q_R_P
+Q1 _ M Q1 R_P_Q
+Q1 _ M Q1 R_Q_P
+Q1 _ _ Q1 _
+Q1 _ _ Q1 eps
+#=== id=""
+Q1 id=" P Q1 X"
+Q1 % X Q1 X
+Q1 eps X Q1 eps
+Q1 " " Q1 eps
+#=== class=""
+Q1 class=" Q Q1 X"
+#=== style=""
+Q1 style=" R Q1 X"
+
+#====== <title>
+# Z3 = inside head tag
+# M = global atribut
+Q2 <title Z3 Q13 M>X</title>Z3
+Q13 eps X Q13 eps
+Q13 eps M Q13 eps
+Q13 > > Q13 eps
+Q13 % X Q13 X
+Q13 eps X Q13 eps
+
+# global atribut title
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q13 _ M Q13 P
+Q13 _ M Q13 Q
+Q13 _ M Q13 R
+Q13 _ M Q13 P_Q
+Q13 _ M Q13 P_R
+Q13 _ M Q13 Q_P
+Q13 _ M Q13 Q_R
+Q13 _ M Q13 R_P
+Q13 _ M Q13 R_Q
+Q13 _ M Q13 P_Q_R
+Q13 _ M Q13 P_R_Q
+Q13 _ M Q13 Q_P_R
+Q13 _ M Q13 Q_R_P
+Q13 _ M Q13 R_P_Q
+Q13 _ M Q13 R_Q_P
+Q13 _ _ Q13 _
+Q13 _ _ Q13 eps
+#=== id=""
+Q13 id=" P Q13 X"
+Q13 " " Q13 eps
+#=== class=""
+Q13 class=" Q Q13 X"
+#=== style=""
+Q13 style=" R Q13 X"
+
+#====== </title>
+Q13 </title> </title> Q2 eps
+
+#====== <link rel="" href=""> 
+# State Q5
+# z = rel
+# y = href
+Q5 <link Z3 Q5 M_z_y>Z3
+Q5 <link Z3 Q5 _z_yM>Z3
+Q5 <link Z3 Q5 _zM_y>Z3
+Q5 _ _ Q5 _
+Q5 _ _ Q5 eps
+Q5 eps y Q5 eps
+Q5 eps M Q5 eps
+Q5 > > Q2 eps
+Q5 % X Q5 X   
+Q5 eps X Q5 eps
+#========= rel=""
+Q5 rel=" z Q5 X"
+Q5 " " Q5 eps
+#============ href=""
+Q5 href=" Q5 X"
+Q5 " " Q5 eps
+
+# global atribut link
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q5 _ M Q5 P
+Q5 _ M Q5 Q
+Q5 _ M Q5 R
+Q5 _ M Q5 P_Q
+Q5 _ M Q5 P_R
+Q5 _ M Q5 Q_P
+Q5 _ M Q5 Q_R
+Q5 _ M Q5 R_P
+Q5 _ M Q5 R_Q
+Q5 _ M Q5 P_Q_R
+Q5 _ M Q5 P_R_Q
+Q5 _ M Q5 Q_P_R
+Q5 _ M Q5 Q_R_P
+Q5 _ M Q5 R_P_Q
+Q5 _ M Q5 R_Q_P
+Q5 _ _ Q5 _
+Q5 _ _ Q5 eps
+#=== id=""
+Q5 id=" P Q5 X"
+Q5 " " Q5 eps
+#=== class=""
+Q5 class=" Q Q5 X"
+#=== style=""
+Q5 style=" R Q5 X"
+
+#====== <script src="">
+# state Q6
+# w = src
+Q2 <script Z3 Q6 _wM>X</script>Z3
+Q2 <script Z3 Q6 M_w>X</script>Z3
+Q6 _ _ Q6 _
+Q6 _ _ Q6 eps
+Q6 eps M Q6 eps
+Q6 > > Q2 eps
+Q6 % X Q6 X 
+Q6 eps X Q6 eps
+#========= src=""
+Q6 src=" w Q6 X"
+Q6 " " Q6 eps
+Q6 % X Q6 X
+Q6 eps X Q6 eps
+
+# global atribut script
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q6 _ M Q6 P
+Q6 _ M Q6 Q
+Q6 _ M Q6 R
+Q6 _ M Q6 P_Q
+Q6 _ M Q6 P_R
+Q6 _ M Q6 Q_P
+Q6 _ M Q6 Q_R
+Q6 _ M Q6 R_P
+Q6 _ M Q6 R_Q
+Q6 _ M Q6 P_Q_R
+Q6 _ M Q6 P_R_Q
+Q6 _ M Q6 Q_P_R
+Q6 _ M Q6 Q_R_P
+Q6 _ M Q6 R_P_Q
+Q6 _ M Q6 R_Q_P
+Q6 _ _ Q6 _
+Q6 _ _ Q6 eps
+#=== id=""
+Q6 id=" P Q6 X"
+Q6 " " Q6 eps
+#=== class=""
+Q6 class=" Q Q6 X"
+#=== style=""
+Q6 style=" R Q6 X"
+
+#====== </script>
+Q6 </script> </script> Q2 eps
+
+#=== </head>
+Q2 </head> </head> Q3 eps
+
+#=== <body>
+# state Q4
+# Z4 = inside Body tag
+# M = global atribut
+Q3 <body Z2 Q3 M>Z4C
+Q3 eps M Q3 eps
+Q3 > > Q4 eps
+Q3 % X Q3 X
+Q3 eps X Q3 eps
+
+# global atribut body
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q3 _ M Q3 P
+Q3 _ M Q3 Q
+Q3 _ M Q3 R
+Q3 _ M Q3 P_Q
+Q3 _ M Q3 P_R
+Q3 _ M Q3 Q_P
+Q3 _ M Q3 Q_R
+Q3 _ M Q3 R_P
+Q3 _ M Q3 R_Q
+Q3 _ M Q3 P_Q_R
+Q3 _ M Q3 P_R_Q
+Q3 _ M Q3 Q_P_R
+Q3 _ M Q3 Q_R_P
+Q3 _ M Q3 R_P_Q
+Q3 _ M Q3 R_Q_P
+Q3 _ _ Q3 _
+Q3 _ _ Q3 eps
+#=== id=""
+Q3 id=" P Q3 X"
+Q3 " " Q3 eps
+#=== class=""
+Q3 class=" Q Q3 X"
+#=== style=""
+Q3 style=" R Q3 X"
+
+#====== <h1>
+Q4 <h1 Z4 Q7 M>X</h1>Z
+Q7 eps M Q7 eps
+Q7 > > Q7 eps
+Q7 % X Q7 X
+Q7 eps X Q7 eps
+
+# global atribut h1
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q7 _ M Q7 P
+Q7 _ M Q7 Q
+Q7 _ M Q7 R
+Q7 _ M Q7 P_Q
+Q7 _ M Q7 P_R
+Q7 _ M Q7 Q_P
+Q7 _ M Q7 Q_R
+Q7 _ M Q7 R_P
+Q7 _ M Q7 R_Q
+Q7 _ M Q7 P_Q_R
+Q7 _ M Q7 P_R_Q
+Q7 _ M Q7 Q_P_R
+Q7 _ M Q7 Q_R_P
+Q7 _ M Q7 R_P_Q
+Q7 _ M Q7 R_Q_P
+Q7 _ _ Q7 _
+Q7 _ _ Q7 eps
+#=== id=""
+Q7 id=" P Q7 X"
+Q7 " " Q7 eps
+#=== class=""
+Q7 class=" Q Q7 X"
+#=== style=""
+Q7 style=" R Q7 X"
+
+#====== </h1>
+Q7 </h1> </h1> Q4 eps
+
+#====== <h2>
+Q4 <h2 Z4 Q8 M>X</h2>Z
+Q8 eps M Q8 eps
+Q8 > > Q8 eps
+Q8 % X Q8 X
+Q8 eps X Q8 eps
+
+# global atribut h2
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q8 _ M Q8 P
+Q8 _ M Q8 Q
+Q8 _ M Q8 R
+Q8 _ M Q8 P_Q
+Q8 _ M Q8 P_R
+Q8 _ M Q8 Q_P
+Q8 _ M Q8 Q_R
+Q8 _ M Q8 R_P
+Q8 _ M Q8 R_Q
+Q8 _ M Q8 P_Q_R
+Q8 _ M Q8 P_R_Q
+Q8 _ M Q8 Q_P_R
+Q8 _ M Q8 Q_R_P
+Q8 _ M Q8 R_P_Q
+Q8 _ M Q8 R_Q_P
+Q8 _ _ Q8 _
+Q8 _ _ Q8 eps
+#=== id=""
+Q8 id=" P Q8 X"
+Q8 " " Q8 eps
+#=== class=""
+Q8 class=" Q Q8 X"
+#=== style=""
+Q8 style=" R Q8 X"
+
+#====== </h2>
+Q8 </h2> </h2> Q4 eps
+
+#====== <h3>
+Q4 <h3 Z4 Q9 M>X</h3>Z
+Q9 eps M Q9 eps
+Q9 > > Q9 eps
+Q9 % X Q9 X
+Q9 eps X Q9 eps
+
+# global atribut h3
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q9 _ M Q9 P
+Q9 _ M Q9 Q
+Q9 _ M Q9 R
+Q9 _ M Q9 P_Q
+Q9 _ M Q9 P_R
+Q9 _ M Q9 Q_P
+Q9 _ M Q9 Q_R
+Q9 _ M Q9 R_P
+Q9 _ M Q9 R_Q
+Q9 _ M Q9 P_Q_R
+Q9 _ M Q9 P_R_Q
+Q9 _ M Q9 Q_P_R
+Q9 _ M Q9 Q_R_P
+Q9 _ M Q9 R_P_Q
+Q9 _ M Q9 R_Q_P
+Q9 _ _ Q9 _
+Q9 _ _ Q9 eps
+#=== id=""
+Q9 id=" P Q9 X"
+Q9 " " Q9 eps
+#=== class=""
+Q9 class=" Q Q9 X"
+#=== style=""
+Q9 style=" R Q9 X"
+
+#====== </h3>
+Q9 </h3> </h3> Q4 eps
+
+#====== <h4>
+Q4 <h4 Z4 Q10 M>X</h4>Z
+Q10 eps M Q10 eps
+Q10 > > Q10 eps
+Q10 % X Q10 X
+Q10 eps X Q10 eps
+
+# global atribut h4
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q10 _ M Q10 P
+Q10 _ M Q10 Q
+Q10 _ M Q10 R
+Q10 _ M Q10 P_Q
+Q10 _ M Q10 P_R
+Q10 _ M Q10 Q_P
+Q10 _ M Q10 Q_R
+Q10 _ M Q10 R_P
+Q10 _ M Q10 R_Q
+Q10 _ M Q10 P_Q_R
+Q10 _ M Q10 P_R_Q
+Q10 _ M Q10 Q_P_R
+Q10 _ M Q10 Q_R_P
+Q10 _ M Q10 R_P_Q
+Q10 _ M Q10 R_Q_P
+Q10 _ _ Q10 _
+Q10 _ _ Q10 eps
+#=== id=""
+Q10 id=" P Q10 X"
+Q10 " " Q10 eps
+#=== class=""
+Q10 class=" Q Q10 X"
+#=== style=""
+Q10 style=" R Q10 X"
+
+#====== </h4>
+Q10 </h4> </h4> Q4 eps
+
+#====== <h5>
+Q4 <h5 Z4 Q11 M>X</h5>Z
+Q11 eps M Q11 eps
+Q11 > > Q11 eps
+Q11 % X Q11 X
+Q11 eps X Q11 eps
+
+# global atribut h5
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q11 _ M Q11 P
+Q11 _ M Q11 Q
+Q11 _ M Q11 R
+Q11 _ M Q11 P_Q
+Q11 _ M Q11 P_R
+Q11 _ M Q11 Q_P
+Q11 _ M Q11 Q_R
+Q11 _ M Q11 R_P
+Q11 _ M Q11 R_Q
+Q11 _ M Q11 P_Q_R
+Q11 _ M Q11 P_R_Q
+Q11 _ M Q11 Q_P_R
+Q11 _ M Q11 Q_R_P
+Q11 _ M Q11 R_P_Q
+Q11 _ M Q11 R_Q_P
+Q11 _ _ Q11 _
+Q11 _ _ Q11 eps
+#=== id=""
+Q11 id=" P Q11 X"
+Q11 " " Q11 eps
+#=== class=""
+Q11 class=" Q Q11 X"
+#=== style=""
+Q11 style=" R Q11 X"
+
+#====== </h5>
+Q11 </h5> </h5> Q4 eps
+
+#====== <h6>
+Q4 <h6 Z4 Q12 M>X</h6>Z
+Q12 eps M Q12 eps
+Q12 > > Q12 eps
+Q12 % X Q12 X
+Q12 eps X Q12 eps
+
+# global atribut h6
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q12 _ M Q12 P
+Q12 _ M Q12 Q
+Q12 _ M Q12 R
+Q12 _ M Q12 P_Q
+Q12 _ M Q12 P_R
+Q12 _ M Q12 Q_P
+Q12 _ M Q12 Q_R
+Q12 _ M Q12 R_P
+Q12 _ M Q12 R_Q
+Q12 _ M Q12 P_Q_R
+Q12 _ M Q12 P_R_Q
+Q12 _ M Q12 Q_P_R
+Q12 _ M Q12 Q_R_P
+Q12 _ M Q12 R_P_Q
+Q12 _ M Q12 R_Q_P
+Q12 _ _ Q12 _
+Q12 _ _ Q12 eps
+#=== id=""
+Q12 id=" P Q12 X"
+Q12 " " Q12 eps
+#=== class=""
+Q12 class=" Q Q12 X"
+#=== style=""
+Q12 style=" R Q12 X"
+
+#====== </h6>
+Q12 </h6> </h6> Q4 eps
+
+#====== <p>
+Q4 <p Z4 Q14 M>X</p>Z4
+Q14 > > Q14 eps
+Q14 eps M Q14 eps
+Q14 % X Q14 X
+Q14 eps X Q14 eps
+
+# global atribut p
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q14 _ M Q14 P
+Q14 _ M Q14 Q
+Q14 _ M Q14 R
+Q14 _ M Q14 P_Q
+Q14 _ M Q14 P_R
+Q14 _ M Q14 Q_P
+Q14 _ M Q14 Q_R
+Q14 _ M Q14 R_P
+Q14 _ M Q14 R_Q
+Q14 _ M Q14 P_Q_R
+Q14 _ M Q14 P_R_Q
+Q14 _ M Q14 Q_P_R
+Q14 _ M Q14 Q_R_P
+Q14 _ M Q14 R_P_Q
+Q14 _ M Q14 R_Q_P
+Q14 _ _ Q14 _
+Q14 _ _ Q14 eps
+#=== id=""
+Q14 id=" P Q14 X"
+Q14 " " Q14 eps
+#=== class=""
+Q14 class=" Q Q14 X"
+#=== style=""
+Q14 style=" R Q14 X"
+
+#====== </p>
+Q14 </p> </p> Q4 eps
+
+#====== <br>
+Q4 <br Z4 Q15 M>Z4
+Q15 > > Q4 eps
+Q15 eps M Q15 eps
+Q15 % X Q15 X
+Q15 eps X Q15 eps
+
+# global atribut br
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q15 _ M Q15 P
+Q15 _ M Q15 Q
+Q15 _ M Q15 R
+Q15 _ M Q15 P_Q
+Q15 _ M Q15 P_R
+Q15 _ M Q15 Q_P
+Q15 _ M Q15 Q_R
+Q15 _ M Q15 R_P
+Q15 _ M Q15 R_Q
+Q15 _ M Q15 P_Q_R
+Q15 _ M Q15 P_R_Q
+Q15 _ M Q15 Q_P_R
+Q15 _ M Q15 Q_R_P
+Q15 _ M Q15 R_P_Q
+Q15 _ M Q15 R_Q_P
+Q15 _ _ Q15 _
+Q15 _ _ Q15 eps
+#=== id=""
+Q15 id=" P Q15 X"
+Q15 " " Q15 eps
+#=== class=""
+Q15 class=" Q Q15 X"
+#=== style=""
+Q15 style=" R Q15 X"
+
+#====== <em>
+Q4 <em Z4 Q16 M>X</em>Z4
+Q16 > > Q16 eps
+Q16 eps M Q16 eps
+Q16 % X Q16 X
+Q16 eps X Q16 eps
+
+# global atribut em
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q16 _ M Q16 P
+Q16 _ M Q16 Q
+Q16 _ M Q16 R
+Q16 _ M Q16 P_Q
+Q16 _ M Q16 P_R
+Q16 _ M Q16 Q_P
+Q16 _ M Q16 Q_R
+Q16 _ M Q16 R_P
+Q16 _ M Q16 R_Q
+Q16 _ M Q16 P_Q_R
+Q16 _ M Q16 P_R_Q
+Q16 _ M Q16 Q_P_R
+Q16 _ M Q16 Q_R_P
+Q16 _ M Q16 R_P_Q
+Q16 _ M Q16 R_Q_P
+Q16 _ _ Q16 _
+Q16 _ _ Q16 eps
+#=== id=""
+Q16 id=" P Q16 X"
+Q16 " " Q16 eps
+#=== class=""
+Q16 class=" Q Q16 X"
+#=== style=""
+Q16 style=" R Q16 X"
+
+#====== </em>
+Q16 </em> </em> Q4 eps
+
+#====== <b>
+Q4 <b Z4 Q17 M>X</b>Z4
+Q17 > > Q17 eps
+Q17 eps M Q17 eps
+Q17 % X Q17 X
+Q17 eps X Q17 eps
+
+# global atribut b
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q17 _ M Q17 P
+Q17 _ M Q17 Q
+Q17 _ M Q17 R
+Q17 _ M Q17 P_Q
+Q17 _ M Q17 P_R
+Q17 _ M Q17 Q_P
+Q17 _ M Q17 Q_R
+Q17 _ M Q17 R_P
+Q17 _ M Q17 R_Q
+Q17 _ M Q17 P_Q_R
+Q17 _ M Q17 P_R_Q
+Q17 _ M Q17 Q_P_R
+Q17 _ M Q17 Q_R_P
+Q17 _ M Q17 R_P_Q
+Q17 _ M Q17 R_Q_P
+Q17 _ _ Q17 _
+Q17 _ _ Q17 eps
+#=== id=""
+Q17 id=" P Q17 X"
+Q17 " " Q17 eps
+#=== class=""
+Q17 class=" Q Q17 X"
+#=== style=""
+Q17 style=" R Q17 X"
+
+#====== </b>
+Q17 </b> </b> Q4 eps
+
+#====== <abbr>
+Q4 <abbr Z4 Q18 M>X</abbr>Z4
+Q18 > > Q18 eps
+Q18 eps M Q18 eps
+Q18 % X Q18 X
+Q18 eps X Q18 eps
+
+# global atribut abbr
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q18 _ M Q18 P
+Q18 _ M Q18 Q
+Q18 _ M Q18 R
+Q18 _ M Q18 P_Q
+Q18 _ M Q18 P_R
+Q18 _ M Q18 Q_P
+Q18 _ M Q18 Q_R
+Q18 _ M Q18 R_P
+Q18 _ M Q18 R_Q
+Q18 _ M Q18 P_Q_R
+Q18 _ M Q18 P_R_Q
+Q18 _ M Q18 Q_P_R
+Q18 _ M Q18 Q_R_P
+Q18 _ M Q18 R_P_Q
+Q18 _ M Q18 R_Q_P
+Q18 _ _ Q18 _
+Q18 _ _ Q18 eps
+#=== id=""
+Q18 id=" P Q18 X"
+Q18 " " Q18 eps
+#=== class=""
+Q18 class=" Q Q18 X"
+#=== style=""
+Q18 style=" R Q18 X"
+
+#====== </abbr>
+Q18 </abbr> </abbr> Q4 eps
+
+#====== <strong>
+Q4 <strong Z4 Q19 M>X</strong>Z4
+Q19 > > Q19 eps
+Q19 eps M Q19 eps
+Q19 % X Q19 X
+Q19 eps X Q19 eps
+
+# global atribut strong
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q19 _ M Q19 P
+Q19 _ M Q19 Q
+Q19 _ M Q19 R
+Q19 _ M Q19 P_Q
+Q19 _ M Q19 P_R
+Q19 _ M Q19 Q_P
+Q19 _ M Q19 Q_R
+Q19 _ M Q19 R_P
+Q19 _ M Q19 R_Q
+Q19 _ M Q19 P_Q_R
+Q19 _ M Q19 P_R_Q
+Q19 _ M Q19 Q_P_R
+Q19 _ M Q19 Q_R_P
+Q19 _ M Q19 R_P_Q
+Q19 _ M Q19 R_Q_P
+Q19 _ _ Q19 _
+Q19 _ _ Q19 eps
+#=== id=""
+Q19 id=" P Q19 X"
+Q19 " " Q19 eps
+#=== class=""
+Q19 class=" Q Q19 X"
+#=== style=""
+Q19 style=" R Q19 X"
+
+#====== </strong>
+Q19 </strong> </strong> Q4 eps
+
+#====== <small>
+Q4 <small Z4 Q19 M>X</small>Z4
+Q19 > > Q19 eps
+Q19 eps M Q19 eps
+Q19 % X Q19 X
+Q19 eps X Q19 eps
+
+# global atribut small
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q19 _ M Q19 P
+Q19 _ M Q19 Q
+Q19 _ M Q19 R
+Q19 _ M Q19 P_Q
+Q19 _ M Q19 P_R
+Q19 _ M Q19 Q_P
+Q19 _ M Q19 Q_R
+Q19 _ M Q19 R_P
+Q19 _ M Q19 R_Q
+Q19 _ M Q19 P_Q_R
+Q19 _ M Q19 P_R_Q
+Q19 _ M Q19 Q_P_R
+Q19 _ M Q19 Q_R_P
+Q19 _ M Q19 R_P_Q
+Q19 _ M Q19 R_Q_P
+Q19 _ _ Q19 _
+Q19 _ _ Q19 eps
+#=== id=""
+Q19 id=" P Q19 X"
+Q19 " " Q19 eps
+#=== class=""
+Q19 class=" Q Q19 X"
+#=== style=""
+Q19 style=" R Q19 X"
+
+#====== </small>
+Q19 </small> </small> Q4 eps
+
+#====== <hr>
+Q4 <hr Z4 Q15 M>Z4
+Q15 > > Q4 eps
+Q15 eps M Q15 eps
+Q15 % X Q15 X
+Q15 eps X Q15 eps
+
+# global atribut hr
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q15 _ M Q15 P
+Q15 _ M Q15 Q
+Q15 _ M Q15 R
+Q15 _ M Q15 P_Q
+Q15 _ M Q15 P_R
+Q15 _ M Q15 Q_P
+Q15 _ M Q15 Q_R
+Q15 _ M Q15 R_P
+Q15 _ M Q15 R_Q
+Q15 _ M Q15 P_Q_R
+Q15 _ M Q15 P_R_Q
+Q15 _ M Q15 Q_P_R
+Q15 _ M Q15 Q_R_P
+Q15 _ M Q15 R_P_Q
+Q15 _ M Q15 R_Q_P
+Q15 _ _ Q15 _
+Q15 _ _ Q15 eps
+#=== id=""
+Q15 id=" P Q15 X"
+Q15 " " Q15 eps
+#=== class=""
+Q15 class=" Q Q15 X"
+#=== style=""
+Q15 style=" R Q15 X"
+
+#====== <table>
+Q4 <table Z4 Q20 M>N</table>Z4
+Q20 > > Q20 eps
+Q20 eps M Q20 eps
+Q20 % X Q20 X
+Q20 eps X Q20 eps
+
+# global atribut table
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q20 _ M Q20 P
+Q20 _ M Q20 Q
+Q20 _ M Q20 R
+Q20 _ M Q20 P_Q
+Q20 _ M Q20 P_R
+Q20 _ M Q20 Q_P
+Q20 _ M Q20 Q_R
+Q20 _ M Q20 R_P
+Q20 _ M Q20 R_Q
+Q20 _ M Q20 P_Q_R
+Q20 _ M Q20 P_R_Q
+Q20 _ M Q20 Q_P_R
+Q20 _ M Q20 Q_R_P
+Q20 _ M Q20 R_P_Q
+Q20 _ M Q20 R_Q_P
+Q20 _ _ Q20 _
+Q20 _ _ Q20 eps
+#=== id=""
+Q20 id=" P Q20 X"
+Q20 " " Q20 eps
+#=== class=""
+Q20 class=" Q Q20 X"
+#=== style=""
+Q20 style=" R Q20 X"
+
+#========= <tr>
+Q20 <tr N Q21 M>T</tr>N
+Q21 > > Q21 eps
+Q21 eps M Q21 eps
+Q21 % X Q21 X
+Q21 eps X Q21 eps
+
+# global atribut tr
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q21 _ M Q21 P
+Q21 _ M Q21 Q
+Q21 _ M Q21 R
+Q21 _ M Q21 P_Q
+Q21 _ M Q21 P_R
+Q21 _ M Q21 Q_P
+Q21 _ M Q21 Q_R
+Q21 _ M Q21 R_P
+Q21 _ M Q21 R_Q
+Q21 _ M Q21 P_Q_R
+Q21 _ M Q21 P_R_Q
+Q21 _ M Q21 Q_P_R
+Q21 _ M Q21 Q_R_P
+Q21 _ M Q21 R_P_Q
+Q21 _ M Q21 R_Q_P
+Q21 _ _ Q21 _
+Q21 _ _ Q21 eps
+#=== id=""
+Q21 id=" P Q21 X"
+Q21 " " Q21 eps
+#=== class=""
+Q21 class=" Q Q21 X"
+#=== style=""
+Q21 style=" R Q21 X"
+
+#========= <td>
+Q21 <td T Q22 M>X</td>T
+Q22 > > Q22 eps
+Q22 eps M Q22 eps
+Q22 % X Q22 X
+Q22 eps X Q22 eps
+
+# global atribut td
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q22 _ M Q22 P
+Q22 _ M Q22 Q
+Q22 _ M Q22 R
+Q22 _ M Q22 P_Q
+Q22 _ M Q22 P_R
+Q22 _ M Q22 Q_P
+Q22 _ M Q22 Q_R
+Q22 _ M Q22 R_P
+Q22 _ M Q22 R_Q
+Q22 _ M Q22 P_Q_R
+Q22 _ M Q22 P_R_Q
+Q22 _ M Q22 Q_P_R
+Q22 _ M Q22 Q_R_P
+Q22 _ M Q22 R_P_Q
+Q22 _ M Q22 R_Q_P
+Q22 _ _ Q22 _
+Q22 _ _ Q22 eps
+#=== id=""
+Q22 id=" P Q22 X"
+Q22 " " Q22 eps
+#=== class=""
+Q22 class=" Q Q22 X"
+#=== style=""
+Q22 style=" R Q22 X"
+
+#========= </td>
+Q22 </td> </td> Q21 eps
+
+#========= </tr>
+Q21 </tr> </tr> Q20 eps
+
+#====== </table>
+Q20 </table> </table> Q4 eps
+
+#====== <link rel="" href=""> 
+# State Q23
+# z = rel
+# y = href
+Q23 <link Z3 Q23 M_z_y>Z3
+Q23 <link Z3 Q23 _z_yM>Z3
+Q23 <link Z3 Q23 _zM_y>Z3
+Q23 _ _ Q23 _
+Q23 _ _ Q23 eps
+Q23 eps y Q23 eps
+Q23 eps M Q23 eps
+Q23 > > Q4 eps
+Q23 % X Q23 X   
+Q23 eps X Q23 eps
+#========= rel=""
+Q23 rel=" z Q23 X"
+Q23 " " Q23 eps
+#============ href=""
+Q23 href=" Q23 X"
+Q23 " " Q23 eps
+
+# global atribut link
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q23 _ M Q23 P
+Q23 _ M Q23 Q
+Q23 _ M Q23 R
+Q23 _ M Q23 P_Q
+Q23 _ M Q23 P_R
+Q23 _ M Q23 Q_P
+Q23 _ M Q23 Q_R
+Q23 _ M Q23 R_P
+Q23 _ M Q23 R_Q
+Q23 _ M Q23 P_Q_R
+Q23 _ M Q23 P_R_Q
+Q23 _ M Q23 Q_P_R
+Q23 _ M Q23 Q_R_P
+Q23 _ M Q23 R_P_Q
+Q23 _ M Q23 R_Q_P
+Q23 _ _ Q23 _
+Q23 _ _ Q23 eps
+#=== id=""
+Q23 id=" P Q23 X"
+Q23 " " Q23 eps
+#=== class=""
+Q23 class=" Q Q23 X"
+#=== style=""
+Q23 style=" R Q23 X"
+
+#====== <script src="">
+# state Q24
+# w = src
+Q2 <script Z3 Q24 _wM>X</script>Z3
+Q2 <script Z3 Q24 M_w>X</script>Z3
+Q24 _ _ Q24 _
+Q24 _ _ Q24 eps
+Q24 eps M Q24 eps
+Q24 > > Q2 eps
+Q24 % X Q24 X 
+Q24 eps X Q24 eps
+#========= src=""
+Q24 src=" w Q24 X"
+Q24 " " Q24 eps
+Q24 % X Q24 X
+Q24 eps X Q24 eps
+
+# global atribut script
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q24 _ M Q24 P
+Q24 _ M Q24 Q
+Q24 _ M Q24 R
+Q24 _ M Q24 P_Q
+Q24 _ M Q24 P_R
+Q24 _ M Q24 Q_P
+Q24 _ M Q24 Q_R
+Q24 _ M Q24 R_P
+Q24 _ M Q24 R_Q
+Q24 _ M Q24 P_Q_R
+Q24 _ M Q24 P_R_Q
+Q24 _ M Q24 Q_P_R
+Q24 _ M Q24 Q_R_P
+Q24 _ M Q24 R_P_Q
+Q24 _ M Q24 R_Q_P
+Q24 _ _ Q24 _
+Q24 _ _ Q24 eps
+#=== id=""
+Q24 id=" P Q24 X"
+Q24 " " Q24 eps
+#=== class=""
+Q24 class=" Q Q24 X"
+#=== style=""
+Q24 style=" R Q24 X"
+
+#====== </script>
+Q24 </script> </script> Q2 eps
+
+#=== </body>
+Q4 </body> </body> Q1 eps
+
+# </html>
+Q1 </html> </html> Q99 eps
