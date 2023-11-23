@@ -1227,7 +1227,174 @@ Q26 " " Q26 eps
 #=== class=""
 Q26 class=" Q Q26 X"
 #=== style=""
-Q26 style=" R Q29 X"
+Q26 style=" R Q4 X"
+
+#====== <button type=""> type:{submit, reset, button}
+Q4 < Z4 Q30 b_v>XPZ4
+Q30 b b Q30 u
+Q30 u u Q30 t
+Q30 t t Q30 z
+Q30 t z Q30 o
+Q30 o o Q30 n
+Q30 n n Q30 eps
+Q30 _ _ Q30 _
+Q30 _ _ Q30 eps
+Q30 > > Q30 eps
+Q30 % X Q30 X
+Q30 eps X Q30 eps
+
+#========= type="A"  A:{submit, reset, button}
+Q30 eps v Q30 eps
+Q30 t v Q30 y
+Q30 y y Q30 p
+Q30 p p Q30 e
+Q30 e e Q30 =
+Q30 = = Q30 "A"
+Q30 " " Q30 eps
+#============ A submit
+Q30 s A Q30 ubmit
+Q30 u u Q30 eps
+Q30 b b Q30 eps
+Q30 m m Q30 eps
+Q30 i i Q30 eps
+Q30 t t Q30 eps
+#============ A reset
+Q30 r A Q30 eset
+Q30 e e Q30 eps
+Q30 s s Q30 eps
+#Q30 t t Q30 eps    
+#============ A button
+Q30 b A Q30 utton
+#Q30 b b Q30 eps
+#Q30 u u Q30 eps
+#Q30 t t Q30 eps
+Q30 o o Q30 eps
+Q30 n n Q30 eps
+
+#====== </button>
+Q30 < P Q30 /
+Q30 / / Q30 b
+Q30 b b Q30 u
+Q30 u u Q30 t
+Q30 t z Q30 o
+Q30 o o Q30 n
+Q30 n n Q30 >
+Q30 > > Q4 eps
+
+#====== <form action="" method="">
+# STATE Q31
+# A = action
+# B = method
+# C = method content
+Q4 < Z4 Q31 f_A_B>XQZ4
+Q4 < Z4 Q31 f_A_B>XQZ4
+Q31 f f Q31 o
+Q31 o o Q31 r
+Q31 r r Q31 m
+Q31 m m Q31 eps
+Q31 _ _ Q31 _
+Q31 _ _ Q31 eps
+Q31 > > Q31 eps
+Q31 % X Q31 X
+Q31 eps X Q31 eps
+
+#========= action=""
+Q31 eps A Q31 eps
+Q31 a A Q31 ction
+Q31 c c Q31 eps
+Q31 t t Q31 eps
+Q31 i i Q31 eps
+Q31 o o Q31 eps
+Q31 n n Q31 ="X"
+Q31 = = Q31 eps
+Q31 " " Q31 eps
+
+#========= method="" method: {POST, GET}
+Q31 eps B Q31 eps
+Q31 m B Q31 ethod
+Q31 e e Q31 eps
+#Q31 t t Q31 eps
+Q31 h h Q31 eps
+#Q31 o o Q31 eps
+Q31 d d Q31 ="C"
+Q31 = = Q31 eps
+Q31 " " Q31 eps
+#============ method="GET"
+Q31 G C Q31 E
+Q31 E E Q31 T
+Q31 T T Q31 eps
+#============ method="POST"
+Q31 P C Q31 O
+Q31 O O Q31 S
+Q31 S S Q31 T
+#Q31 T T Q31 eps
+
+#====== </form>
+Q31 < Q Q31 /
+Q31 / / Q31 f
+Q31 f f Q31 o
+Q31 o o Q31 r
+Q31 r r Q31 m
+Q31 m m Q31 >
+Q31 > > Q4 eps
+
+#====== <input type=""> type: {text, password, email, number, checkbox}
+# STATE Q32
+# A = type
+# B = type content
+Q4 < Z4 Q32 input_A>Z4
+Q32 i i Q32 eps
+Q32 n n Q32 eps
+Q32 p p Q32 eps
+Q32 u u Q32 eps
+Q32 t t Q32 eps
+Q32 _ _ Q32 _
+Q32 _ _ Q32 eps
+Q32 > > Q4 eps
+
+#========= type="" type: {text, password, email, number, checkbox}
+Q32 eps A Q32 eps
+Q32 t A Q32 ype
+Q32 y y Q32 eps
+#Q32 p p Q32 eps
+Q32 e e Q32 =
+Q32 = = Q32 "B"
+Q32 " " Q32 eps
+#============ type="text"
+Q32 t B Q32 ext
+#Q32 e e Q32 eps
+Q32 x x Q32 eps
+#Q32 t t Q32 eps
+#============ type="password"
+Q32 p B Q32 assword
+Q32 a a Q32 eps
+Q32 s s Q32 eps
+Q32 w w Q32 eps
+Q32 o o Q32 eps
+Q32 r r Q32 eps
+Q32 d d Q32 eps
+#============ type="email"
+Q32 e B Q32 mail
+Q32 m m Q32 eps
+#Q32 a a Q32 eps
+Q32 i i Q32 eps
+Q32 l l Q32 eps
+#============ type="number"
+Q32 n B Q32 umber
+Q32 u u Q32 eps
+#Q32 m m Q32 eps
+Q32 b b Q32 eps
+#Q32 e e Q32 eps
+#Q32 r r Q32 eps
+#============ type="checkbox"
+Q32 c B Q32 heckbox
+Q32 h h Q32 eps
+#Q32 e e Q32 eps
+Q32 c c Q32 eps
+#Q32 k k Q32 eps
+#Q32 b b Q32 eps
+#Q32 o o Q32 eps
+Q32 x x Q32 eps
 
 #=== </body>
 Q4 </body> </body> Q1 eps
