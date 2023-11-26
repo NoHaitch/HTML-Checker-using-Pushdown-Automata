@@ -64,6 +64,19 @@ def deleteComment(html):
 
     return string
 
+
+def removeStrings(html):
+    result = []
+    inside_quotes = False
+    for char in html:
+        if char == '"':
+            inside_quotes = not inside_quotes
+            result.append("\"")
+        elif not inside_quotes:
+            result.append(char)
+    return ''.join(result)
+
+
 if __name__ == "__main__":
     # Inisialisasi untuk mengambil argumen PDA.txt dan juga file HTML
     parser = argparse.ArgumentParser(description="Masukkan PDA dan HTML File!")
@@ -92,11 +105,12 @@ if __name__ == "__main__":
             PDA.append(line.split())
 
     for i in range(len(PDA)):
+        if PDA[i][1] == "eps":
+            PDA[i][1] = ""
         if PDA[i][4] == "eps":
             PDA[i][4] = ""
         elif PDA[i][4] == "_":
             PDA[i][4] = " "
-    delta = [" " for i in range(5)]
     string = ""
     for i in range(len(htmlArray)):
         string += htmlArray[i]
@@ -117,28 +131,52 @@ if __name__ == "__main__":
             html += command
             command = ''
     html = deleteComment(html)
+    html = removeStrings(html)
     f = ["Q", "", "Z"]
     res = ["Q", "Z"]
     delta = ["Q", "", "Z", "Q", "Z"]
     mistakes = []
     command = ""
     print(html)
-    for i in range(len(html)):
-        command += html[i]
-        for j in range(len(PDA)):
-            if delta[0] == PDA[j][0] and command == PDA[j][1]:
-                if PDA[j][2] in delta[2]:
-                    delta[0] = PDA[j][3]
-                    delta[2] = delta[2].replace(PDA[j][2], PDA[j][4], 1)
-                else:
-                    mistakes.append(command)
-                print(command, delta, mistakes)
-                command = ""
-            elif delta[0] == PDA[j][0] and PDA[j][1] == "eps" and PDA[j][2] in delta[2]:
-                delta[0] = PDA[j][3]
-                delta[2] = delta[2].replace(PDA[j][2], PDA[j][4], 1)
+    done = False
+    i = 0
 
-                print(PDA[j][1], delta, mistakes)
+    while len(delta[2]) != 0 and len(html) != 0:
+        foundPDA = False
+        restart = False
+        for j in range(len(PDA)):
+            if delta[0] == PDA[j][0]:
+                foundPDA = True
+                print(f"Current PDA: {PDA[j]}")
+                print(PDA[j][2])
+                tempstack = ""
+                for k in range(len(PDA[j][2])):
+                    tempstack += PDA[j][2][k]
+                    if PDA[j][2] == tempstack:
+                        same = True
+                        if len(html) < len(PDA[j][2]):
+                            print(f"Syntax error: {html} {len(html)}")
+                            sys.exit()
+                        for l in range(len(PDA[j][1])):
+                            if PDA[j][1][l] != html[l]:
+                                same = False
+                        if same:
+                            print('Found')
+                            delta[0] = PDA[j][3]
+                            delta[2] = delta[2][len(PDA[j][2]):]
+                            delta[2] = PDA[j][4] + delta[2]
+                            print("Current ",html, len(PDA[j][1]))
+                            html = html[len(PDA[j][1]):]
+                            print("New Current ",html)
+                            print("-----> ", delta[2], " | ",delta[0])
+                            restart = True
+                        else:
+                            print("--", delta[2], " | ",delta[0])
+
+        if not foundPDA:
+            break
+
+
     print("result:", delta)
 
     if delta[0] == "Q99" and delta[2] == "":
