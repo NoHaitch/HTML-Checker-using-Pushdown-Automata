@@ -3,10 +3,10 @@
 
 # <html>
 # STATE Q
-# Z1 = head
-# Z2 = body
+# A = head
+# B = body
 # M global atribut
-Q <html Z Q M>Z1Z2</html>
+Q <html Z Q M>AB</html>
 Q eps M Q eps
 Q > > Q1 eps
 
@@ -44,12 +44,12 @@ Q style=" R Q X"
 
 #=== <head>
 # STATE Q1
-# Z3 = inside head html tag
+# C = inside head html tag
 # M = global atribut
-Q1 <head Z1 Q1 M>Z3</head>
+Q1 <head Z1 Q1 M>C</head>
 Q1 eps M Q1 eps
 Q1 > > Q2 eps
-Q2 eps Z3 Q2 eps
+Q2 eps C Q2 eps
 
 # global atribut head
 # P = id
@@ -84,9 +84,9 @@ Q1 class=" Q Q1 X"
 Q1 style=" R Q1 X"
 
 #====== <title>
-# Z3 = inside head tag
+# C = inside head tag
 # M = global atribut
-Q2 <title Z3 Q4 M>X</title>Z3
+Q2 <title C Q4 M>X</title>C
 Q4 eps X Q4 eps
 Q4 eps M Q4 eps
 Q4 > > Q4 eps
@@ -128,23 +128,24 @@ Q4 </title> </title> Q2 eps
 
 #====== <link rel="" href=""> 
 # State Q5
-# z = rel
-# y = href
-Q5 <link Z3 Q5 M_z_y>Z3
-Q5 <link Z3 Q5 _z_yM>Z3
-Q5 <link Z3 Q5 _zM_y>Z3
+Q5 <link C Q5 KML>C
+Q5 <link C Q5 KLM>C
+Q5 <link C Q5 MLK>C
+Q5 <link C Q5 MKL>C
+Q5 <link C Q5 LMK>C
+Q5 <link C Q5 LKM>C
 Q5 _ _ Q5 _
 Q5 _ _ Q5 eps
-Q5 eps y Q5 eps
+Q5 eps L Q5 eps
 Q5 eps M Q5 eps
 Q5 > > Q2 eps
 Q5 % X Q5 X   
 Q5 eps X Q5 eps
 #========= rel=""
-Q5 rel=" z Q5 X"
+Q5 rel=" K Q5 X"
 Q5 " " Q5 eps
 #============ href=""
-Q5 href=" Q5 X"
+Q5 href=" L Q5 X"
 Q5 " " Q5 eps
 
 # global atribut link
@@ -179,9 +180,9 @@ Q5 style=" R Q5 X"
 
 #====== <script src="">
 # state Q6
-# w = src
-Q2 <script Z3 Q6 _wM>X</script>Z3
-Q2 <script Z3 Q6 M_w>X</script>Z3
+# W = src
+Q2 <script C Q6 WM>X</script>C
+Q2 <script C Q6 MW>X</script>C
 Q6 _ _ Q6 _
 Q6 _ _ Q6 eps
 Q6 eps M Q6 eps
@@ -232,9 +233,9 @@ Q2 </head> </head> Q3 eps
 
 #=== <body>
 # state Q3
-# Z4 = inside Body tag
+# D = inside Body tag
 # M = global atribut
-Q3 <body Z2 Q3 M>Z4C
+Q3 <body B Q3 M>D
 Q3 eps M Q3 eps
 Q3 > > Q4 eps
 Q3 % X Q3 X
@@ -271,7 +272,7 @@ Q3 class=" Q Q3 X"
 Q3 style=" R Q3 X"
 
 #====== <h1>
-Q3 <h1 Z4 Q19 M>X</h1>Z
+Q3 <h1 D Q19 M>Y</h1>D
 Q19 eps M Q19 eps
 Q19 > > Q19 eps
 Q19 % X Q19 X
@@ -311,7 +312,7 @@ Q19 style=" R Q19 X"
 Q19 </h1> </h1> Q3 eps
 
 #====== <h2>
-Q3 <h2 Z4 Q20 M>X</h2>Z
+Q3 <h2 D Q20 M>Y</h2>D
 Q20 eps M Q20 eps
 Q20 > > Q20 eps
 Q20 % X Q20 X
@@ -351,7 +352,7 @@ Q20 style=" R Q20 X"
 Q20 </h2> </h2> Q3 eps
 
 #====== <h3>
-Q3 <h3 Z4 Q21 M>X</h3>Z
+Q3 <h3 D Q21 M>Y</h3>D
 Q21 eps M Q21 eps
 Q21 > > Q21 eps
 Q21 % X Q21 X
@@ -391,7 +392,7 @@ Q21 style=" R Q21 X"
 Q21 </h3> </h3> Q3 eps
 
 #====== <h4>
-Q3 <h4 Z4 Q22 M>X</h4>Z
+Q3 <h4 D Q22 M>Y</h4>D
 Q22 eps M Q22 eps
 Q22 > > Q22 eps
 Q22 % X Q22 X
@@ -431,7 +432,7 @@ Q22 style=" R Q22 X"
 Q22 </h4> </h4> Q3 eps
 
 #====== <h5>
-Q3 <h5 Z4 Q23 M>X</h5>Z
+Q3 <h5 D Q23 M>Y</h5>D
 Q23 eps M Q23 eps
 Q23 > > Q23 eps
 Q23 % X Q23 X
@@ -471,7 +472,7 @@ Q23 style=" R Q23 X"
 Q23 </h5> </h5> Q3 eps
 
 #====== <h6>
-Q3 <h6 Z4 Q24 M>X</h6>Z
+Q3 <h6 D Q24 M>Y</h6>D
 Q24 eps M Q24 eps
 Q24 > > Q24 eps
 Q24 % X Q24 X
@@ -511,7 +512,7 @@ Q24 style=" R Q24 X"
 Q24 </h6> </h6> Q3 eps
 
 #====== <p>
-Q3 <p Z4 Q25 M>X</p>Z4
+Q3 <p D Q25 M>Y</p>D
 Q25 > > Q25 eps
 Q25 eps M Q25 eps
 Q25 % X Q25 X
@@ -551,7 +552,7 @@ Q25 style=" R Q22 X"
 Q25 </p> </p> Q3 eps
 
 #====== <br>
-Q3 <br Z4 Q26 M>Z4
+Q3 <br D Q26 M>D
 Q26 > > Q6 eps
 Q26 eps M Q26 eps
 Q26 % X Q26 X
@@ -788,7 +789,7 @@ Q19 style=" R Q19 X"
 Q19 </small> </small> Q4 eps
 
 #====== <hr>
-Q4 <hr Z4 Q15 M>Z4
+Q4 <hr D Q15 M>D
 Q15 > > Q4 eps
 Q15 eps M Q15 eps
 Q15 % X Q15 X
