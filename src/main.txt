@@ -434,8 +434,8 @@ Q98 <img Y Q14 MKJ</limg>Y
 Q98 <img Y Q14 MJK</limg>Y
 Q98 <img Y Q14 JKM</limg>Y
 Q98 <img Y Q14 JMK</limg>Y
-Q98 <script> Q6 WM>X</lscript>Y
-Q98 <script> Q6 MW>X</lscript>Y
+Q98 <script> Y Q6 WM>X</lscript>Y
+Q98 <script> Y Q6 MW>X</lscript>Y
 Q98 eps xlink Q26 eps
 Q98 <link Y Q26 KML<llink>Y
 Q98 <link Y Q26 KLM<llink>Y
