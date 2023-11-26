@@ -20,13 +20,13 @@ Q2 > > Q2 eps
 #====== <title>
 # C = inside head tag
 # M = global atribut
-Q2 <title C Q4 M>X</title>C
-Q4 eps X Q4 eps
-Q4 > > Q4 eps
-Q4 % X Q4 X
+Q2 <title C Q3 M>X</title>C
+Q3 eps X Q3 eps
+Q3 > > Q3 eps
+Q3 % X Q3 X
 
 #====== </title>
-Q4 </title> </title> Q2 eps
+Q3 </title> </title> Q2 eps
 
 #====== <link rel="" href=""> 
 # State Q5
@@ -69,6 +69,46 @@ Q2 </head><body> B Q3 M>D</body>
 # M = global atribut
 Q3 eps D Q3 eps
 Q3 > > Q3 eps
+
+#====== <table>
+# state Q7
+Q3 <table D Q7 M>A</table>D
+Q7 > > Q7 eps
+Q7 </table> </table> Q3 esp
+Q7 </table> </ltable> Q98 eps
+
+#========= <tr>
+Q7 <tr N Q8 M>T</tr>N
+Q8 > > Q8 eps
+Q8 eps M Q8 eps
+Q8 % X Q8 X
+Q8 eps X Q8 eps
+
+#========= <td>
+Q8 <td T Q22 M>X</td>T
+Q22 > > Q22 eps
+Q22 eps M Q22 eps
+Q22 % X Q22 X
+Q22 eps X Q22 eps
+
+#========= <th>
+Q25 <th S Q25 M>X</hd>S
+Q25 > > Q25 eps
+Q25 eps M Q25 eps
+Q25 % X Q25 X
+Q25 eps X Q25 eps
+
+#========= </th>
+Q25 </th> </th> Q22 eps
+
+#========= </td>
+Q22 </td> </td> Q8 eps
+
+#========= </tr>
+Q8 </tr> </tr> Q7 eps
+
+#====== </table>
+Q7 </table> </table> Q3 eps
 
 #====== <h1>
 Q3 <h1 D Q19 M>Y</h1>D
@@ -148,101 +188,61 @@ Q26 % X Q26 X
 Q26 eps X Q26 eps
 
 #====== <em>
-Q4 <em Z4 Q16 M>X</em>Z4
+Q3 <em D Q16 M>X</em>D
 Q16 > > Q16 eps
 Q16 eps M Q16 eps
 Q16 % X Q16 X
 Q16 eps X Q16 eps
 
 #====== </em>
-Q16 </em> </em> Q4 eps
+Q16 </em> </em> Q3 eps
 
 #====== <b>
-Q4 <b Z4 Q17 M>X</b>Z4
+Q3 <b D Q17 M>X</b>D
 Q17 > > Q17 eps
 Q17 eps M Q17 eps
 Q17 % X Q17 X
 Q17 eps X Q17 eps
 
 #====== </b>
-Q17 </b> </b> Q4 eps
+Q17 </b> </b> Q3 eps
 
 #====== <abbr>
-Q4 <abbr Z4 Q18 M>X</abbr>Z4
+Q3 <abbr D Q18 M>X</abbr>D
 Q18 > > Q18 eps
 Q18 eps M Q18 eps
 Q18 % X Q18 X
 Q18 eps X Q18 eps
 
 #====== </abbr>
-Q18 </abbr> </abbr> Q4 eps
+Q18 </abbr> </abbr> Q3 eps
 
 #====== <strong>
-Q4 <strong Z4 Q19 M>X</strong>Z4
+Q3 <strong D Q19 M>X</strong>D
 Q19 > > Q19 eps
 Q19 eps M Q19 eps
 Q19 % X Q19 X
 Q19 eps X Q19 eps
 
 #====== </strong>
-Q19 </strong> </strong> Q4 eps
+Q19 </strong> </strong> Q3 eps
 
 #====== <small>
-Q4 <small Z4 Q19 M>X</small>Z4
+Q3 <small D Q19 M>X</small>D
 Q19 > > Q19 eps
 Q19 eps M Q19 eps
 Q19 % X Q19 X
 Q19 eps X Q19 eps
 
 #====== </small>
-Q19 </small> </small> Q4 eps
+Q19 </small> </small> Q3 eps
 
 #====== <hr>
-Q4 <hr D Q15 M>D
-Q15 > > Q4 eps
+Q3 <hr D Q15 M>D
+Q15 > > Q3 eps
 Q15 eps M Q15 eps
 Q15 % X Q15 X
 Q15 eps X Q15 eps
-
-#====== <table>
-Q4 <table Z4 Q20 M>N</table>Z4
-Q20 > > Q20 eps
-Q20 eps M Q20 eps
-Q20 % X Q20 X
-Q20 eps X Q20 eps
-
-#========= <tr>
-Q20 <tr N Q21 M>T</tr>N
-Q21 > > Q21 eps
-Q21 eps M Q21 eps
-Q21 % X Q21 X
-Q21 eps X Q21 eps
-
-#========= <td>
-Q21 <td T Q22 M>X</td>T
-Q22 > > Q22 eps
-Q22 eps M Q22 eps
-Q22 % X Q22 X
-Q22 eps X Q22 eps
-
-#========= <th>
-Q25 <th S Q25 M>X</hd>S
-Q25 > > Q25 eps
-Q25 eps M Q25 eps
-Q25 % X Q25 X
-Q25 eps X Q25 eps
-
-#========= </th>
-Q25 </th> </th> Q22 eps
-
-#========= </td>
-Q22 </td> </td> Q21 eps
-
-#========= </tr>
-Q21 </tr> </tr> Q20 eps
-
-#====== </table>
-Q20 </table> </table> Q4 eps
 
 #====== <link rel="" href=""> 
 # State Q23
@@ -255,7 +255,7 @@ Q23 _ _ Q23 _
 Q23 _ _ Q23 eps
 Q23 eps y Q23 eps
 Q23 eps M Q23 eps
-Q23 > > Q4 eps
+Q23 > > Q3 eps
 Q23 % X Q23 X   
 Q23 eps X Q23 eps
 #========= rel=""
@@ -286,7 +286,7 @@ Q24 eps X Q24 eps
 Q24 </script> </script> Q28 eps
 
 #====== <div>
-Q28 <div Z4 Q28 M>X</div>Z4
+Q28 <div D Q28 M>X</div>D
 Q28 > > Q28 eps
 Q28 eps M Q28 eps
 Q28 % X Q28 X
@@ -326,7 +326,7 @@ Q26 _ _ Q26 _
 Q26 _ _ Q26 eps
 Q26 eps v Q26 eps
 Q26 eps M Q26 eps
-Q26 > > Q4 eps
+Q26 > > Q3 eps
 Q26 % X Q26 X   
 Q26 eps X Q26 eps
 #========= src=""
@@ -337,7 +337,7 @@ Q26 alt=" Q26 X"
 Q26 " " Q26 eps
 
 #====== <button type=""> type:{submit, reset, button}
-Q4 < Z4 Q30 b_v>XPZ4
+Q3 < D Q30 b_v>XPD
 Q30 b button Q30 eps
 Q30 _ _ Q30 _
 Q30 _ _ Q30 eps
@@ -373,15 +373,15 @@ Q30 u u Q30 t
 Q30 t z Q30 o
 Q30 o o Q30 n
 Q30 n n Q30 >
-Q30 > > Q4 eps
+Q30 > > Q3 eps
 
 #====== <form action="" method="">
 # STATE Q31
 # A = action
 # B = method
 # C = method content
-Q4 < Z4 Q31 f_A_B>XQZ4
-Q4 < Z4 Q31 f_A_B>XQZ4
+Q3 < D Q31 f_A_B>XQD
+Q3 < D Q31 f_A_B>XQD
 Q31 f f Q31 o
 Q31 o o Q31 r
 Q31 r r Q31 m
@@ -430,13 +430,13 @@ Q31 f f Q31 o
 Q31 o o Q31 r
 Q31 r r Q31 m
 Q31 m m Q31 >
-Q31 > > Q4 eps
+Q31 > > Q3 eps
 
 #====== <input type=""> type: {text, password, email, number, checkbox}
 # STATE Q32
 # A = type
 # B = type content
-Q4 < Z4 Q32 input_A>Z4
+Q3 < D Q32 input_A>D
 Q32 i i Q32 eps
 Q32 n n Q32 eps
 Q32 p p Q32 eps
@@ -444,7 +444,7 @@ Q32 u u Q32 eps
 Q32 t t Q32 eps
 Q32 _ _ Q32 _
 Q32 _ _ Q32 eps
-Q32 > > Q4 eps
+Q32 > > Q3 eps
 
 #========= type="" type: {text, password, email, number, checkbox}
 Q32 eps A Q32 eps
