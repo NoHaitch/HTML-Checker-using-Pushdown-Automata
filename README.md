@@ -7,8 +7,8 @@
   <h1 align="center">Tugas Besar IF2124 Teori Bahasa Formal dan Otomata</h1>
 
   <p align="center">
-    <h3> HTML Checker dengan Pushdown Automata (PDA)</h3>
-    <p>using Python</p>
+    <h3> HTML Checker using Pushdown Automata (PDA)</h3>
+    <p>on Python langguage</p>
     <br />
     <a href="https://github.com/zultopia/Tubes-IF2124-TBFO/issues">Report Bug</a>
     ·
@@ -24,7 +24,7 @@
 <!-- CONTRIBUTOR -->
 <div align="center" id="contributor">
   <strong>
-    <h3>Dibuat oleh Kelompok K2-G7 :</h3>
+    <h3>Dibuat oleh Kelompok Otax Error :</h3>
     <table align="center">
       <tr>
         <td>NIM</td>
@@ -68,6 +68,7 @@
 
 ## External Links
 
+- [Repository](https://github.com/zultopia/Tubes-IF2124-TBFO/)
 - [Link Spesifikasi](https://docs.google.com/document/d/1W5QSSHVrXvArj3Aonw4FhbfctBK6J2YGefXpWsLW43Y/edit)
 - [Link Q&A](https://docs.google.com/spreadsheets/d/1g3IBzFkH1edkMHGrsCAsjYFQD8APkmrxhBAUQj7sXBk/edit#gid=0)
 - [Link Data Kelompok](https://docs.google.com/spreadsheets/d/10BsoEnc5gNOecG3WAjynOeTsL86Llrup34aQoojYOhU/edit#gid=318288469)
@@ -76,9 +77,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-balbalblablablablalblablabla ... 
+To further develop our knowledge in Automata Langguage in IF2124 Theory of Formal Langguage and Automata course, we were given the task to make a HTML checker using PDA with the help of Python. The main checker will be the PDA not using hardcoded Regex in Python. 
 
-PDA in Python reference : https://github.com/theodoregold/pushdown-automata
+PDA in Python used as reference : https://github.com/theodoregold/pushdown-automata
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -90,13 +91,16 @@ PDA in Python reference : https://github.com/theodoregold/pushdown-automata
    ```sh
    git clone https://github.com/zultopia/Tubes-IF2124-TBFO
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- INSTURCTION -->
-## Developing
-### Building
-### Deploying / Publishing
+2. Change directory to src
+   ```sh
+   cd src
+   ```
+3. Run the program
+   ```sh
+   python main.py main.txt [html.txt]
+   # main.txt is the PDA for the checker
+   # html.txt is the html file that is checked
+   ```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -104,10 +108,43 @@ PDA in Python reference : https://github.com/theodoregold/pushdown-automata
 <!-- FEATURES -->
 ## Features
 
-### 1. XXXXXX
+### 1. List of tag checked
+  - html
+  - head
+  - body
+  - title
+  - link
+  - script
+  - h1, h2, h3, h4, h5, h6
+  - p
+  - br
+  - hr
+  - div
+  - a
+  - img
+  - button
+  - form
+  - input
+  - table
+  - tr
+  - td
+  - th
 
-&ensp;&ensp;
-blablalbalbalblablablab...
+## 2. Tag with nested
+  - html
+  - body
+  - head
+   - div
+  - form
+  - table
+
+## 3. Formating element tag
+  - em
+  - b
+  - abbr
+  - strong
+  - small
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
