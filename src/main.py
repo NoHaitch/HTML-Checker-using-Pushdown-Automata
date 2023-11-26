@@ -155,6 +155,7 @@ if __name__ == "__main__":
     done = False
     i = 0
 
+    
     while len(delta[2]) != 0 and len(html) != 0:
         foundPDA = False
         restart = False
@@ -162,25 +163,41 @@ if __name__ == "__main__":
             if delta[0] == PDA[j][0]:
                 foundPDA = True
                 tempstack = ""
-                for k in range(len(PDA[j][2])):
-                    tempstack += PDA[j][2][k]
+                for k in range(len(delta[2])):
+                    tempstack += delta[2][k]
                     if PDA[j][2] == tempstack:
+                        print(f"Current PDA: {PDA[j]}")
                         same = True
                         if len(html) < len(PDA[j][2]):
+                            print(f"Syntax error: {html} {len(html)}")
                             sys.exit()
                         for l in range(len(PDA[j][1])):
+                            print(html)
+                            print(PDA[j][1][l], " != " ,html[l])
                             if PDA[j][1][l] != html[l]:
                                 same = False
+                                break
                         if same:
+                            print('>>>>>> Found <<<<')
+                            print("Current ",html, len(PDA[j][1]))
+                            print("before -----> ", delta[2], " | ",delta[0])
                             delta[0] = PDA[j][3]
                             delta[2] = delta[2][len(PDA[j][2]):]
                             delta[2] = PDA[j][4] + delta[2]
                             html = html[len(PDA[j][1]):]
+                            print("New Current ",html)
+                            print("after -----> ", delta[2], " | ",delta[0])
                             restart = True
+                            break
+                        else:
+                            print("-- ", delta[2], " | ",delta[0], " | ", tempstack)
+
                 if(restart):
-                    j = 0
+                    break
         if not foundPDA:
             break
+
+
 
 
     print("result:", delta)

@@ -18,16 +18,6 @@ Q1 <head A Q2 M>C</head>
 
 
 
-Q2 _ M Q2 PM
-Q2 _ M Q2 RM
-Q2 _ M Q2 QM
-Q2 id=" P Q2 X"
-Q2 class=" Q Q2 X"
-Q2 style=" R Q2 X"
-Q2 style=" R Q2 X"
-
-Q2 % X Q2 X
-
 
 #====== <title>
 # C = inside head tag
@@ -45,14 +35,15 @@ Q3 % X Q3 X
 # K = rel
 # L = href
 $ M = global atribut
-Q5 <link C Q5 KML>C
-Q5 <link C Q5 KLM>C
-Q5 <link C Q5 MLK>C
-Q5 <link C Q5 MKL>C
-Q5 <link C Q5 LMK>C
-Q5 <link C Q5 LKM>C
-Q5 _rel=" K Q5 X"
-Q5 _href=" L Q5 X"
+Q2 <link C Q5 KML>C
+Q2 <link C Q5 KLM>C
+Q2 <link C Q5 MLK>C
+Q2 <link C Q5 MKL>C
+Q2 <link C Q5 LMK>C
+Q2 <link C Q5 LKM>C
+Q5 rel=" K Q5 X"
+Q5 href=" L Q5 X"
+Q5 eps L Q5 eps
 
 
 Q5 % X Q5 X
@@ -64,6 +55,7 @@ Q5 % X Q5 X
 Q2 <script C Q6 WM>X</script>C
 Q2 <script C Q6 MW>X</script>C
 Q6 _src=" W Q6 X"
+Q6 eps W Q6 eps
 Q6 % X Q6 X
 
 
@@ -73,7 +65,7 @@ Q6 % X Q6 X
 
 
 #=== </head> + <body
-Q2 </head><body> </head>B Q3 M>D</body>
+Q2 </head><body </head>B Q3 M>D</body>
 
 #=== <body>
 # state Q3
@@ -277,7 +269,7 @@ Q32 % X Q32 X
 
 
 #====== <hr>
-Q3 <br D Q27 M>D
+Q3 <hr D Q27 M>D
 
 
 
@@ -495,6 +487,17 @@ Q1 style=" R Q1 X"
 Q1 style=" R Q1 X"
 
 Q1 % X Q1 X
+
+
+Q2 _ M Q2 PM
+Q2 _ M Q2 RM
+Q2 _ M Q2 QM
+Q2 id=" P Q2 X"
+Q2 class=" Q Q2 X"
+Q2 style=" R Q2 X"
+Q2 style=" R Q2 X"
+
+Q2 % X Q2 X
 
 Q3 _ M Q3 PM
 Q3 _ M Q3 RM
@@ -841,8 +844,6 @@ Q6 " X" Q6 eps
 Q6 eps X Q6 eps
 Q6 > > Q6 eps
 Q6 </script> </script> Q2 eps
-Q3 eps D Q3 eps
-Q3 > > Q3 eps
 Q3 eps D Q3 eps
 Q7 > > Q7 eps
 Q7 </table> </ltable> Q98 eps
