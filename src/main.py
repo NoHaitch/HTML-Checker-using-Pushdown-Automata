@@ -2,6 +2,20 @@ import os
 import argparse
 import sys
 
+def printblue(input):
+    print("\033[31m {}\033[00m" .format(input))
+
+def printLogo():
+    printblue("""$$\   $$\ $$$$$$$$\ $$\      $$\ $$\              $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$$\ $$$$$$$\  
+ $$ |  $$ |\__$$  __|$$$\    $$$ |$$ |            $$  __$$\ $$ |  $$ |$$  _____|$$  __$$\ $$ | $$  |$$  _____|$$  __$$\ 
+ $$ |  $$ |   $$ |   $$$$\  $$$$ |$$ |            $$ /  \__|$$ |  $$ |$$ |      $$ /  \__|$$ |$$  / $$ |      $$ |  $$ |
+ $$$$$$$$ |   $$ |   $$\$$\$$ $$ |$$ |            $$ |      $$$$$$$$ |$$$$$\    $$ |      $$$$$  /  $$$$$\    $$$$$$$  |
+ $$  __$$ |   $$ |   $$ \$$$  $$ |$$ |            $$ |      $$  __$$ |$$  __|   $$ |      $$  $$<   $$  __|   $$  __$$< 
+ $$ |  $$ |   $$ |   $$ |\$  /$$ |$$ |            $$ |  $$\ $$ |  $$ |$$ |      $$ |  $$\ $$ |\$$\  $$ |      $$ |  $$ |
+ $$ |  $$ |   $$ |   $$ | \_/ $$ |$$$$$$$$\       \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ | \$$\ $$$$$$$$\ $$ |  $$ |
+ \__|  \__|   \__|   \__|     \__|\________|       \______/ \__|  \__|\________| \______/ \__|  \__|\________|\__|  \__|""")
+    print("\033[32m ")
+printLogo()
 
 # Fungsi untuk parse HTML ke array
 def parseHTMLfile(filename):
@@ -147,32 +161,24 @@ if __name__ == "__main__":
         for j in range(len(PDA)):
             if delta[0] == PDA[j][0]:
                 foundPDA = True
-                print(f"Current PDA: {PDA[j]}")
-                print(PDA[j][2])
                 tempstack = ""
                 for k in range(len(PDA[j][2])):
                     tempstack += PDA[j][2][k]
                     if PDA[j][2] == tempstack:
                         same = True
                         if len(html) < len(PDA[j][2]):
-                            print(f"Syntax error: {html} {len(html)}")
                             sys.exit()
                         for l in range(len(PDA[j][1])):
                             if PDA[j][1][l] != html[l]:
                                 same = False
                         if same:
-                            print('Found')
                             delta[0] = PDA[j][3]
                             delta[2] = delta[2][len(PDA[j][2]):]
                             delta[2] = PDA[j][4] + delta[2]
-                            print("Current ",html, len(PDA[j][1]))
                             html = html[len(PDA[j][1]):]
-                            print("New Current ",html)
-                            print("-----> ", delta[2], " | ",delta[0])
                             restart = True
-                        else:
-                            print("--", delta[2], " | ",delta[0])
-
+                if(restart):
+                    j = 0
         if not foundPDA:
             break
 
