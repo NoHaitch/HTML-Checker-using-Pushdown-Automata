@@ -7,36 +7,17 @@ import sys
 def parseHTMLfile(filename):
     contentofFile = []
     file = open(filename, "r")
-    isComment = False
-    dash = False
-    secondDash = False
     for line in file:
-        syntax = ""
         startSpace = True
+        syntax = ""
         for i in range(len(line)):
             if startSpace:
                 if line[i] == " ":
                     continue
                 else:
                     startSpace = False
-            if line[i] == '<' and line[i + 1] == '!':
-                isComment = True
-            if isComment:
-                if line[i] == '-':
-                    dash = True
-                if dash and line[i] == '-':
-                    secondDash = True
-                    dash = False
-                if secondDash and line[i] == '>':
-                    isComment = False
-                    secondDash = False
-                continue
-            else:
-                if line[i] == '\n':
-                    continue
-                syntax += line[i]
+            syntax += line[i]
         syntax.removeprefix(" ")
-        syntax = syntax.replace("-->", "")
         syntax.removesuffix(" ")
         syntax.removesuffix("\n")
         if syntax != '' and len(syntax) != 0 and syntax != '\n' and syntax != '\t' and syntax != '\r' and syntax != '\0':
@@ -82,25 +63,59 @@ if __name__ == "__main__":
     PDAFile = open(args.PDAFile, "r")
     PDA = []
     for line in PDAFile:
-        if "#" in line:
+        if "#" in line or line == '\n' or line == ' ' or len(line) == 0:
             continue
         else:
             PDA.append(line.split())
+
+    for i in range(len(PDA)):
+        if PDA[i][4] == "eps":
+            PDA[i][4] = ""
     delta = [" " for i in range(5)]
     string = ""
     for i in range(len(htmlArray)):
         string += htmlArray[i]
-    print(string)
 
-    # Mulai parsing string HTML
-    html = False
-    head = False
-    body = False
-    checker = 0
+    # Proses menghilangkan comment di luar tag
     command = ""
+    html = ""
+    insideTag = False
+    for i in string:
+        if i == '<':
+            insideTag = True
+        if insideTag:
+            command += i
+        if i == '>':
+            insideTag = False
+            html += command
+            command = ''
 
-    
+    f = ["Q", "", "Z"]
+    res = ["Q", "Z"]
+    delta = ["Q", "", "Z", "Q", "Z"]
+    mistakes = []
+    command = ""
+    print(html)
+    for i in range(len(html)):
+        command += html[i]
+        for j in range(len(PDA)):
+            if delta[0] == PDA[j][0] and PDA[j][1] == "eps" and PDA[j][2] in delta[2]:
+                delta[0] = PDA[j][3]
+                delta[2] = delta[2].replace(PDA[j][2], PDA[j][4], 1)
 
+                print(PDA[j][1], delta, mistakes)
 
+            elif delta[0] == PDA[j][0] and command == PDA[j][1]:
+                if PDA[j][2] in delta[2]:
+                    delta[0] = PDA[j][3]
+                    delta[2] = delta[2].replace(PDA[j][2], PDA[j][4], 1)
+                else:
+                    mistakes.append(command)
+                print(command, delta, mistakes)
+                command = ""
+    print(delta)
 
-
+    if delta[0] == "Q99" and delta[2] == "":
+        print("Accepted")
+    else:
+        print("Syntax error")
