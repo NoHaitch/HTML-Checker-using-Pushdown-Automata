@@ -78,31 +78,38 @@ Q7 </table> </table> Q3 esp
 Q7 </table> </ltable> Q98 eps
 
 #========= <tr>
-Q7 <tr N Q8 M>T</tr>N
+# state Q8
+Q7 <tr A Q8 M>B</tr>A
 Q8 > > Q8 eps
 Q8 eps M Q8 eps
 Q8 % X Q8 X
 Q8 eps X Q8 eps
 
-#========= <td>
-Q8 <td T Q22 M>X</td>T
-Q22 > > Q22 eps
-Q22 eps M Q22 eps
-Q22 % X Q22 X
-Q22 eps X Q22 eps
-
 #========= <th>
-Q25 <th S Q25 M>X</hd>S
-Q25 > > Q25 eps
-Q25 eps M Q25 eps
-Q25 % X Q25 X
-Q25 eps X Q25 eps
+# state Q9
+Q8 <th B Q9 M>Y</th>B
+Q9 eps Y Q9 eps
+Q9 eps Y Q9 XYX
+Q9 % X Q9 X
+Q9 eps X Q9 eps
+Q9 > > Q9 eps
+Q9 eps Y Q98 Yxth
 
 #========= </th>
-Q25 </th> </th> Q22 eps
+Q9 </th> </th> Q8 eps
+
+#========= <td>
+# state Q10
+Q8 <td B Q10 M>Y</td>B
+Q10 eps Y Q10 eps
+Q10 eps Y Q10 XYX
+Q10 % X Q10 X
+Q10 eps X Q10 eps
+Q10 > > Q10 eps
+Q10 eps Y Q98 Yxtd
 
 #========= </td>
-Q22 </td> </td> Q8 eps
+Q10 </td> </td> Q8 eps
 
 #========= </tr>
 Q8 </tr> </tr> Q7 eps
@@ -245,45 +252,36 @@ Q15 % X Q15 X
 Q15 eps X Q15 eps
 
 #====== <link rel="" href=""> 
-# State Q23
-# z = rel
-# y = href
-Q23 <link Z3 Q23 M_z_y>Z3
-Q23 <link Z3 Q23 _z_yM>Z3
-Q23 <link Z3 Q23 _zM_y>Z3
-Q23 _ _ Q23 _
-Q23 _ _ Q23 eps
-Q23 eps y Q23 eps
-Q23 eps M Q23 eps
-Q23 > > Q3 eps
-Q23 % X Q23 X   
-Q23 eps X Q23 eps
-#========= rel=""
-Q23 rel=" z Q23 X"
-Q23 " " Q23 eps
-#============ href=""
-Q23 href=" Q23 X"
-Q23 " " Q23 eps
+# State Q5
+# K = rel
+# L = href
+$ M = global atribut
+Q5 <link C Q5 KML>C
+Q5 <link C Q5 KLM>C
+Q5 <link C Q5 MLK>C
+Q5 <link C Q5 MKL>C
+Q5 <link C Q5 LMK>C
+Q5 <link C Q5 LKM>C
+Q5 _rel=" K Q5 X"
+Q5 _href=" L Q5 X"
+Q5 eps L Q5 eps
+Q5 eps X" Q5 eps
+Q5 % X Q5 X
+Q5 > > Q2 eps
 
 #====== <script src="">
-# state Q24
-# w = src
-Q2 <script Z3 Q24 _wM>X</script>Z3
-Q2 <script Z3 Q24 M_w>X</script>Z3
-Q24 _ _ Q24 _
-Q24 _ _ Q24 eps
-Q24 eps M Q24 eps
-Q24 > > Q2 eps
-Q24 % X Q24 X 
-Q24 eps X Q24 eps
-#========= src=""
-Q24 src=" w Q24 X"
-Q24 " " Q24 eps
-Q24 % X Q24 X
-Q24 eps X Q24 eps
+# state Q6
+# W = src
+Q2 <script C Q6 WM>X</script>C
+Q2 <script C Q6 MW>X</script>C
+Q6 _src=" W Q6 X"
+Q6 % X Q6 X
+Q6 " X" Q6 eps
+Q6 eps X Q6 eps
+Q6 > > Q6 eps
 
 #====== </script>
-Q24 </script> </script> Q28 eps
+Q6 </script> </script> Q2 eps
 
 #====== <div>
 Q28 <div D Q28 M>X</div>D
@@ -497,5 +495,399 @@ Q3 </body> </body> Q1 eps
 Q1 </html> </html> Q99 eps
 
 
-# GLOBAL ATRIBUT
-# ...
+# ================== GLOBAL ATRIBUT ==================
+Q eps M Q eps
+Q _ M Q PM
+Q _ M Q RM
+Q _ M Q QM
+Q id=" P Q X"
+Q class=" Q Q X"
+Q style=" R Q X"
+Q style=" R Q X"
+Q " X" Q eps
+Q % X Q X
+Q eps X Q eps
+
+Q1 eps M Q1 eps
+Q1 _ M Q1 PM
+Q1 _ M Q1 RM
+Q1 _ M Q1 QM
+Q1 id=" P Q1 X"
+Q1 class=" Q Q1 X"
+Q1 style=" R Q1 X"
+Q1 style=" R Q1 X"
+Q1 " X" Q1 eps
+Q1 % X Q1 X
+Q1 eps X Q1 eps
+
+Q2 eps M Q2 eps
+Q2 _ M Q2 PM
+Q2 _ M Q2 RM
+Q2 _ M Q2 QM
+Q2 id=" P Q2 X"
+Q2 class=" Q Q2 X"
+Q2 style=" R Q2 X"
+Q2 style=" R Q2 X"
+Q2 " X" Q2 eps
+Q2 % X Q2 X
+Q2 eps X Q2 eps
+
+Q3 eps M Q3 eps
+Q3 _ M Q3 PM
+Q3 _ M Q3 RM
+Q3 _ M Q3 QM
+Q3 id=" P Q3 X"
+Q3 class=" Q Q3 X"
+Q3 style=" R Q3 X"
+Q3 style=" R Q3 X"
+Q3 " X" Q3 eps
+Q3 % X Q3 X
+Q3 eps X Q3 eps
+
+Q4 eps M Q4 eps
+Q4 _ M Q4 PM
+Q4 _ M Q4 RM
+Q4 _ M Q4 QM
+Q4 id=" P Q4 X"
+Q4 class=" Q Q4 X"
+Q4 style=" R Q4 X"
+Q4 style=" R Q4 X"
+Q4 " X" Q4 eps
+Q4 % X Q4 X
+Q4 eps X Q4 eps
+
+Q5 eps M Q5 eps
+Q5 _ M Q5 PM
+Q5 _ M Q5 RM
+Q5 _ M Q5 QM
+Q5 id=" P Q5 X"
+Q5 class=" Q Q5 X"
+Q5 style=" R Q5 X"
+Q5 style=" R Q5 X"
+Q5 " X" Q5 eps
+Q5 % X Q5 X
+Q5 eps X Q5 eps
+
+Q6 eps M Q6 eps
+Q6 _ M Q6 PM
+Q6 _ M Q6 RM
+Q6 _ M Q6 QM
+Q6 id=" P Q6 X"
+Q6 class=" Q Q6 X"
+Q6 style=" R Q6 X"
+Q6 style=" R Q6 X"
+Q6 " X" Q6 eps
+Q6 % X Q6 X
+Q6 eps X Q6 eps
+
+Q7 eps M Q7 eps
+Q7 _ M Q7 PM
+Q7 _ M Q7 RM
+Q7 _ M Q7 QM
+Q7 id=" P Q7 X"
+Q7 class=" Q Q7 X"
+Q7 style=" R Q7 X"
+Q7 style=" R Q7 X"
+Q7 " X" Q7 eps
+Q7 % X Q7 X
+Q7 eps X Q7 eps
+
+Q8 eps M Q8 eps
+Q8 _ M Q8 PM
+Q8 _ M Q8 RM
+Q8 _ M Q8 QM
+Q8 id=" P Q8 X"
+Q8 class=" Q Q8 X"
+Q8 style=" R Q8 X"
+Q8 style=" R Q8 X"
+Q8 " X" Q8 eps
+Q8 % X Q8 X
+Q8 eps X Q8 eps
+
+Q9 eps M Q9 eps
+Q9 _ M Q9 PM
+Q9 _ M Q9 RM
+Q9 _ M Q9 QM
+Q9 id=" P Q9 X"
+Q9 class=" Q Q9 X"
+Q9 style=" R Q9 X"
+Q9 style=" R Q9 X"
+Q9 " X" Q9 eps
+Q9 % X Q9 X
+Q9 eps X Q9 eps
+
+Q10 eps M Q10 eps
+Q10 _ M Q10 PM
+Q10 _ M Q10 RM
+Q10 _ M Q10 QM
+Q10 id=" P Q10 X"
+Q10 class=" Q Q10 X"
+Q10 style=" R Q10 X"
+Q10 style=" R Q10 X"
+Q10 " X" Q10 eps
+Q10 % X Q10 X
+Q10 eps X Q10 eps
+
+Q11 eps M Q11 eps
+Q11 _ M Q11 PM
+Q11 _ M Q11 RM
+Q11 _ M Q11 QM
+Q11 id=" P Q11 X"
+Q11 class=" Q Q11 X"
+Q11 style=" R Q11 X"
+Q11 style=" R Q11 X"
+Q11 " X" Q11 eps
+Q11 % X Q11 X
+Q11 eps X Q11 eps
+
+Q12 eps M Q12 eps
+Q12 _ M Q12 PM
+Q12 _ M Q12 RM
+Q12 _ M Q12 QM
+Q12 id=" P Q12 X"
+Q12 class=" Q Q12 X"
+Q12 style=" R Q12 X"
+Q12 style=" R Q12 X"
+Q12 " X" Q12 eps
+Q12 % X Q12 X
+Q12 eps X Q12 eps
+
+Q13 eps M Q13 eps
+Q13 _ M Q13 PM
+Q13 _ M Q13 RM
+Q13 _ M Q13 QM
+Q13 id=" P Q13 X"
+Q13 class=" Q Q13 X"
+Q13 style=" R Q13 X"
+Q13 style=" R Q13 X"
+Q13 " X" Q13 eps
+Q13 % X Q13 X
+Q13 eps X Q13 eps
+
+Q14 eps M Q14 eps
+Q14 _ M Q14 PM
+Q14 _ M Q14 RM
+Q14 _ M Q14 QM
+Q14 id=" P Q14 X"
+Q14 class=" Q Q14 X"
+Q14 style=" R Q14 X"
+Q14 style=" R Q14 X"
+Q14 " X" Q14 eps
+Q14 % X Q14 X
+Q14 eps X Q14 eps
+
+Q15 eps M Q15 eps
+Q15 _ M Q15 PM
+Q15 _ M Q15 RM
+Q15 _ M Q15 QM
+Q15 id=" P Q15 X"
+Q15 class=" Q Q15 X"
+Q15 style=" R Q15 X"
+Q15 style=" R Q15 X"
+Q15 " X" Q15 eps
+Q15 % X Q15 X
+Q15 eps X Q15 eps
+
+Q16 eps M Q16 eps
+Q16 _ M Q16 PM
+Q16 _ M Q16 RM
+Q16 _ M Q16 QM
+Q16 id=" P Q16 X"
+Q16 class=" Q Q16 X"
+Q16 style=" R Q16 X"
+Q16 style=" R Q16 X"
+Q16 " X" Q16 eps
+Q16 % X Q16 X
+Q16 eps X Q16 eps
+
+Q17 eps M Q17 eps
+Q17 _ M Q17 PM
+Q17 _ M Q17 RM
+Q17 _ M Q17 QM
+Q17 id=" P Q17 X"
+Q17 class=" Q Q17 X"
+Q17 style=" R Q17 X"
+Q17 style=" R Q17 X"
+Q17 " X" Q17 eps
+Q17 % X Q17 X
+Q17 eps X Q17 eps
+
+Q18 eps M Q18 eps
+Q18 _ M Q18 PM
+Q18 _ M Q18 RM
+Q18 _ M Q18 QM
+Q18 id=" P Q18 X"
+Q18 class=" Q Q18 X"
+Q18 style=" R Q18 X"
+Q18 style=" R Q18 X"
+Q18 " X" Q18 eps
+Q18 % X Q18 X
+Q18 eps X Q18 eps
+
+Q19 eps M Q19 eps
+Q19 _ M Q19 PM
+Q19 _ M Q19 RM
+Q19 _ M Q19 QM
+Q19 id=" P Q19 X"
+Q19 class=" Q Q19 X"
+Q19 style=" R Q19 X"
+Q19 style=" R Q19 X"
+Q19 " X" Q19 eps
+Q19 % X Q19 X
+Q19 eps X Q19 eps
+
+Q20 eps M Q20 eps
+Q20 _ M Q20 PM
+Q20 _ M Q20 RM
+Q20 _ M Q20 QM
+Q20 id=" P Q20 X"
+Q20 class=" Q Q20 X"
+Q20 style=" R Q20 X"
+Q20 style=" R Q20 X"
+Q20 " X" Q20 eps
+Q20 % X Q20 X
+Q20 eps X Q20 eps
+
+Q21 eps M Q21 eps
+Q21 _ M Q21 PM
+Q21 _ M Q21 RM
+Q21 _ M Q21 QM
+Q21 id=" P Q21 X"
+Q21 class=" Q Q21 X"
+Q21 style=" R Q21 X"
+Q21 style=" R Q21 X"
+Q21 " X" Q21 eps
+Q21 % X Q21 X
+Q21 eps X Q21 eps
+
+Q22 eps M Q22 eps
+Q22 _ M Q22 PM
+Q22 _ M Q22 RM
+Q22 _ M Q22 QM
+Q22 id=" P Q22 X"
+Q22 class=" Q Q22 X"
+Q22 style=" R Q22 X"
+Q22 style=" R Q22 X"
+Q22 " X" Q22 eps
+Q22 % X Q22 X
+Q22 eps X Q22 eps
+
+Q23 eps M Q23 eps
+Q23 _ M Q23 PM
+Q23 _ M Q23 RM
+Q23 _ M Q23 QM
+Q23 id=" P Q23 X"
+Q23 class=" Q Q23 X"
+Q23 style=" R Q23 X"
+Q23 style=" R Q23 X"
+Q23 " X" Q23 eps
+Q23 % X Q23 X
+Q23 eps X Q23 eps
+
+Q24 eps M Q24 eps
+Q24 _ M Q24 PM
+Q24 _ M Q24 RM
+Q24 _ M Q24 QM
+Q24 id=" P Q24 X"
+Q24 class=" Q Q24 X"
+Q24 style=" R Q24 X"
+Q24 style=" R Q24 X"
+Q24 " X" Q24 eps
+Q24 % X Q24 X
+Q24 eps X Q24 eps
+
+Q25 eps M Q25 eps
+Q25 _ M Q25 PM
+Q25 _ M Q25 RM
+Q25 _ M Q25 QM
+Q25 id=" P Q25 X"
+Q25 class=" Q Q25 X"
+Q25 style=" R Q25 X"
+Q25 style=" R Q25 X"
+Q25 " X" Q25 eps
+Q25 % X Q25 X
+Q25 eps X Q25 eps
+
+Q26 eps M Q26 eps
+Q26 _ M Q26 PM
+Q26 _ M Q26 RM
+Q26 _ M Q26 QM
+Q26 id=" P Q26 X"
+Q26 class=" Q Q26 X"
+Q26 style=" R Q26 X"
+Q26 style=" R Q26 X"
+Q26 " X" Q26 eps
+Q26 % X Q26 X
+Q26 eps X Q26 eps
+
+Q27 eps M Q27 eps
+Q27 _ M Q27 PM
+Q27 _ M Q27 RM
+Q27 _ M Q27 QM
+Q27 id=" P Q27 X"
+Q27 class=" Q Q27 X"
+Q27 style=" R Q27 X"
+Q27 style=" R Q27 X"
+Q27 " X" Q27 eps
+Q27 % X Q27 X
+Q27 eps X Q27 eps
+
+Q28 eps M Q28 eps
+Q28 _ M Q28 PM
+Q28 _ M Q28 RM
+Q28 _ M Q28 QM
+Q28 id=" P Q28 X"
+Q28 class=" Q Q28 X"
+Q28 style=" R Q28 X"
+Q28 style=" R Q28 X"
+Q28 " X" Q28 eps
+Q28 % X Q28 X
+Q28 eps X Q28 eps
+
+Q29 eps M Q29 eps
+Q29 _ M Q29 PM
+Q29 _ M Q29 RM
+Q29 _ M Q29 QM
+Q29 id=" P Q29 X"
+Q29 class=" Q Q29 X"
+Q29 style=" R Q29 X"
+Q29 style=" R Q29 X"
+Q29 " X" Q29 eps
+Q29 % X Q29 X
+Q29 eps X Q29 eps
+
+Q30 eps M Q30 eps
+Q30 _ M Q30 PM
+Q30 _ M Q30 RM
+Q30 _ M Q30 QM
+Q30 id=" P Q30 X"
+Q30 class=" Q Q30 X"
+Q30 style=" R Q30 X"
+Q30 style=" R Q30 X"
+Q30 " X" Q30 eps
+Q30 % X Q30 X
+Q30 eps X Q30 eps
+
+Q31 eps M Q31 eps
+Q31 _ M Q31 PM
+Q31 _ M Q31 RM
+Q31 _ M Q31 QM
+Q31 id=" P Q31 X"
+Q31 class=" Q Q31 X"
+Q31 style=" R Q31 X"
+Q31 style=" R Q31 X"
+Q31 " X" Q31 eps
+Q31 % X Q31 X
+Q31 eps X Q31 eps
+
+Q32 eps M Q32 eps
+Q32 _ M Q32 PM
+Q32 _ M Q32 RM
+Q32 _ M Q32 QM
+Q32 id=" P Q32 X"
+Q32 class=" Q Q32 X"
+Q32 style=" R Q32 X"
+Q32 style=" R Q32 X"
+Q32 " X" Q32 eps
+Q32 % X Q32 X
+Q32 eps X Q32 eps
