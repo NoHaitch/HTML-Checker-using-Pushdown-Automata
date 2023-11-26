@@ -6,270 +6,109 @@
 # A = head
 # B = body
 # M global atribut
-Q <html Z Q M>AB</html>
-Q eps M Q eps
-Q > > Q1 eps
-
-# global atribut html 
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q _ M Q P
-Q _ M Q Q
-Q _ M Q R
-Q _ M Q P_Q
-Q _ M Q P_R
-Q _ M Q Q_P
-Q _ M Q Q_R
-Q _ M Q R_P
-Q _ M Q R_Q
-Q _ M Q P_Q_R
-Q _ M Q P_R_Q
-Q _ M Q Q_P_R
-Q _ M Q Q_R_P
-Q _ M Q R_P_Q
-Q _ M Q R_Q_P
-Q _ _ Q eps
-Q _ _ Q _
-#=== id=""
-Q id=" P Q X"
-Q % X Q X
-Q eps X Q eps
-Q " " Q eps
-#=== class=""
-Q class=" Q Q X"
-#=== style=""
-Q style=" R Q X"
+Q <html Z Q1 M>AB</html>
+Q1 > > Q1 eps
 
 #=== <head>
 # STATE Q1
 # C = inside head html tag
 # M = global atribut
-Q1 <head Z1 Q1 M>C</head>
-Q1 eps M Q1 eps
-Q1 > > Q2 eps
+Q1 <head A Q2 M>C</head>
 Q2 eps C Q2 eps
-
-# global atribut head
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q1 _ M Q1 P
-Q1 _ M Q1 Q
-Q1 _ M Q1 R
-Q1 _ M Q1 P_Q
-Q1 _ M Q1 P_R
-Q1 _ M Q1 Q_P
-Q1 _ M Q1 Q_R
-Q1 _ M Q1 R_P
-Q1 _ M Q1 R_Q
-Q1 _ M Q1 P_Q_R
-Q1 _ M Q1 P_R_Q
-Q1 _ M Q1 Q_P_R
-Q1 _ M Q1 Q_R_P
-Q1 _ M Q1 R_P_Q
-Q1 _ M Q1 R_Q_P
-Q1 _ _ Q1 _
-Q1 _ _ Q1 eps
-#=== id=""
-Q1 id=" P Q1 X"
-Q1 % X Q1 X
-Q1 eps X Q1 eps
-Q1 " " Q1 eps
-#=== class=""
-Q1 class=" Q Q1 X"
-#=== style=""
-Q1 style=" R Q1 X"
+Q2 > > Q2 eps
 
 #====== <title>
 # C = inside head tag
 # M = global atribut
-Q2 <title C Q4 M>X</title>C
-Q4 eps X Q4 eps
-Q4 eps M Q4 eps
-Q4 > > Q4 eps
-Q4 % X Q4 X
-Q4 eps X Q4 eps
-
-# global atribut title
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q4 _ M Q4 P
-Q4 _ M Q4 Q
-Q4 _ M Q4 R
-Q4 _ M Q4 P_Q
-Q4 _ M Q4 P_R
-Q4 _ M Q4 Q_P
-Q4 _ M Q4 Q_R
-Q4 _ M Q4 R_P
-Q4 _ M Q4 R_Q
-Q4 _ M Q4 P_Q_R
-Q4 _ M Q4 P_R_Q
-Q4 _ M Q4 Q_P_R
-Q4 _ M Q4 Q_R_P
-Q4 _ M Q4 R_P_Q
-Q4 _ M Q4 R_Q_P
-Q4 _ _ Q4 _
-Q4 _ _ Q4 eps
-#=== id=""
-Q4 id=" P Q4 X"
-Q4 " " Q4 eps
-#=== class=""
-Q4 class=" Q Q4 X"
-#=== style=""
-Q4 style=" R Q4 X"
+Q2 <title C Q3 M>X</title>C
+Q3 eps X Q3 eps
+Q3 > > Q3 eps
+Q3 % X Q3 X
 
 #====== </title>
-Q4 </title> </title> Q2 eps
+Q3 </title> </title> Q2 eps
 
 #====== <link rel="" href=""> 
 # State Q5
+# K = rel
+# L = href
+$ M = global atribut
 Q5 <link C Q5 KML>C
 Q5 <link C Q5 KLM>C
 Q5 <link C Q5 MLK>C
 Q5 <link C Q5 MKL>C
 Q5 <link C Q5 LMK>C
 Q5 <link C Q5 LKM>C
-Q5 _ _ Q5 _
-Q5 _ _ Q5 eps
+Q5 _rel=" K Q5 X"
+Q5 _href=" L Q5 X"
 Q5 eps L Q5 eps
-Q5 eps M Q5 eps
+Q5 eps X" Q5 eps
+Q5 % X Q5 X
 Q5 > > Q2 eps
-Q5 % X Q5 X   
-Q5 eps X Q5 eps
-#========= rel=""
-Q5 rel=" K Q5 X"
-Q5 " " Q5 eps
-#============ href=""
-Q5 href=" L Q5 X"
-Q5 " " Q5 eps
-
-# global atribut link
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q5 _ M Q5 P
-Q5 _ M Q5 Q
-Q5 _ M Q5 R
-Q5 _ M Q5 P_Q
-Q5 _ M Q5 P_R
-Q5 _ M Q5 Q_P
-Q5 _ M Q5 Q_R
-Q5 _ M Q5 R_P
-Q5 _ M Q5 R_Q
-Q5 _ M Q5 P_Q_R
-Q5 _ M Q5 P_R_Q
-Q5 _ M Q5 Q_P_R
-Q5 _ M Q5 Q_R_P
-Q5 _ M Q5 R_P_Q
-Q5 _ M Q5 R_Q_P
-Q5 _ _ Q5 _
-Q5 _ _ Q5 eps
-#=== id=""
-Q5 id=" P Q5 X"
-Q5 " " Q5 eps
-#=== class=""
-Q5 class=" Q Q5 X"
-#=== style=""
-Q5 style=" R Q5 X"
 
 #====== <script src="">
 # state Q6
 # W = src
 Q2 <script C Q6 WM>X</script>C
 Q2 <script C Q6 MW>X</script>C
-Q6 _ _ Q6 _
-Q6 _ _ Q6 eps
-Q6 eps M Q6 eps
-Q6 > > Q2 eps
-Q6 % X Q6 X 
-Q6 eps X Q6 eps
-#========= src=""
-Q6 src=" w Q6 X"
-Q6 " " Q6 eps
+Q6 _src=" W Q6 X"
 Q6 % X Q6 X
+Q6 " X" Q6 eps
 Q6 eps X Q6 eps
-
-# global atribut script
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q6 _ M Q6 P
-Q6 _ M Q6 Q
-Q6 _ M Q6 R
-Q6 _ M Q6 P_Q
-Q6 _ M Q6 P_R
-Q6 _ M Q6 Q_P
-Q6 _ M Q6 Q_R
-Q6 _ M Q6 R_P
-Q6 _ M Q6 R_Q
-Q6 _ M Q6 P_Q_R
-Q6 _ M Q6 P_R_Q
-Q6 _ M Q6 Q_P_R
-Q6 _ M Q6 Q_R_P
-Q6 _ M Q6 R_P_Q
-Q6 _ M Q6 R_Q_P
-Q6 _ _ Q6 _
-Q6 _ _ Q6 eps
-#=== id=""
-Q6 id=" P Q6 X"
-Q6 " " Q6 eps
-#=== class=""
-Q6 class=" Q Q6 X"
-#=== style=""
-Q6 style=" R Q6 X"
+Q6 > > Q6 eps
 
 #====== </script>
 Q6 </script> </script> Q2 eps
 
-#=== </head>
-Q2 </head> </head> Q3 eps
+#=== </head> + <body
+Q2 </head><body> B Q3 M>D</body>
 
 #=== <body>
 # state Q3
 # D = inside Body tag
 # M = global atribut
-Q3 <body B Q3 M>D
-Q3 eps M Q3 eps
-Q3 > > Q4 eps
-Q3 % X Q3 X
-Q3 eps X Q3 eps
+Q3 eps D Q3 eps
+Q3 > > Q3 eps
 
-# global atribut body
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q3 _ M Q3 P
-Q3 _ M Q3 Q
-Q3 _ M Q3 R
-Q3 _ M Q3 P_Q
-Q3 _ M Q3 P_R
-Q3 _ M Q3 Q_P
-Q3 _ M Q3 Q_R
-Q3 _ M Q3 R_P
-Q3 _ M Q3 R_Q
-Q3 _ M Q3 P_Q_R
-Q3 _ M Q3 P_R_Q
-Q3 _ M Q3 Q_P_R
-Q3 _ M Q3 Q_R_P
-Q3 _ M Q3 R_P_Q
-Q3 _ M Q3 R_Q_P
-Q3 _ _ Q3 _
-Q3 _ _ Q3 eps
-#=== id=""
-Q3 id=" P Q3 X"
-Q3 " " Q3 eps
-#=== class=""
-Q3 class=" Q Q3 X"
-#=== style=""
-Q3 style=" R Q3 X"
+#====== <table>
+# state Q7
+Q3 <table D Q7 M>A</table>D
+Q7 > > Q7 eps
+Q7 </table> </table> Q3 esp
+Q7 </table> </ltable> Q98 eps
+
+#========= <tr>
+Q7 <tr N Q8 M>T</tr>N
+Q8 > > Q8 eps
+Q8 eps M Q8 eps
+Q8 % X Q8 X
+Q8 eps X Q8 eps
+
+#========= <td>
+Q8 <td T Q22 M>X</td>T
+Q22 > > Q22 eps
+Q22 eps M Q22 eps
+Q22 % X Q22 X
+Q22 eps X Q22 eps
+
+#========= <th>
+Q25 <th S Q25 M>X</hd>S
+Q25 > > Q25 eps
+Q25 eps M Q25 eps
+Q25 % X Q25 X
+Q25 eps X Q25 eps
+
+#========= </th>
+Q25 </th> </th> Q22 eps
+
+#========= </td>
+Q22 </td> </td> Q8 eps
+
+#========= </tr>
+Q8 </tr> </tr> Q7 eps
+
+#====== </table>
+Q7 </table> </table> Q3 eps
 
 #====== <h1>
 Q3 <h1 D Q19 M>Y</h1>D
@@ -277,36 +116,6 @@ Q19 eps M Q19 eps
 Q19 > > Q19 eps
 Q19 % X Q19 X
 Q19 eps X Q19 eps
-
-# global atribut h1
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q19 _ M Q19 P
-Q19 _ M Q19 Q
-Q19 _ M Q19 R
-Q19 _ M Q19 P_Q
-Q19 _ M Q19 P_R
-Q19 _ M Q19 Q_P
-Q19 _ M Q19 Q_R
-Q19 _ M Q19 R_P
-Q19 _ M Q19 R_Q
-Q19 _ M Q19 P_Q_R
-Q19 _ M Q19 P_R_Q
-Q19 _ M Q19 Q_P_R
-Q19 _ M Q19 Q_R_P
-Q19 _ M Q19 R_P_Q
-Q19 _ M Q19 R_Q_P
-Q19 _ _ Q19 _
-Q19 _ _ Q19 eps
-#=== id=""
-Q19 id=" P Q19 X"
-Q19 " " Q19 eps
-#=== class=""
-Q19 class=" Q Q19 X"
-#=== style=""
-Q19 style=" R Q19 X"
 
 #====== </h1>
 Q19 </h1> </h1> Q3 eps
@@ -318,36 +127,6 @@ Q20 > > Q20 eps
 Q20 % X Q20 X
 Q20 eps X Q20 eps
 
-# global atribut h2
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q20 _ M Q20 P
-Q20 _ M Q20 Q
-Q20 _ M Q20 R
-Q20 _ M Q20 P_Q
-Q20 _ M Q20 P_R
-Q20 _ M Q20 Q_P
-Q20 _ M Q20 Q_R
-Q20 _ M Q20 R_P
-Q20 _ M Q20 R_Q
-Q20 _ M Q20 P_Q_R
-Q20 _ M Q20 P_R_Q
-Q20 _ M Q20 Q_P_R
-Q20 _ M Q20 Q_R_P
-Q20 _ M Q20 R_P_Q
-Q20 _ M Q20 R_Q_P
-Q20 _ _ Q20 _
-Q20 _ _ Q20 eps
-#=== id=""
-Q20 id=" P Q20 X"
-Q20 " " Q20 eps
-#=== class=""
-Q20 class=" Q Q20 X"
-#=== style=""
-Q20 style=" R Q20 X"
-
 #====== </h2>
 Q20 </h2> </h2> Q3 eps
 
@@ -357,36 +136,6 @@ Q21 eps M Q21 eps
 Q21 > > Q21 eps
 Q21 % X Q21 X
 Q21 eps X Q21 eps
-
-# global atribut h3
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q21 _ M Q21 P
-Q21 _ M Q21 Q
-Q21 _ M Q21 R
-Q21 _ M Q21 P_Q
-Q21 _ M Q21 P_R
-Q21 _ M Q21 Q_P
-Q21 _ M Q21 Q_R
-Q21 _ M Q21 R_P
-Q21 _ M Q21 R_Q
-Q21 _ M Q21 P_Q_R
-Q21 _ M Q21 P_R_Q
-Q21 _ M Q21 Q_P_R
-Q21 _ M Q21 Q_R_P
-Q21 _ M Q21 R_P_Q
-Q21 _ M Q21 R_Q_P
-Q21 _ _ Q21 _
-Q21 _ _ Q21 eps
-#=== id=""
-Q21 id=" P Q21 X"
-Q21 " " Q21 eps
-#=== class=""
-Q21 class=" Q Q21 X"
-#=== style=""
-Q21 style=" R Q21 X"
 
 #====== </h3>
 Q21 </h3> </h3> Q3 eps
@@ -398,36 +147,6 @@ Q22 > > Q22 eps
 Q22 % X Q22 X
 Q22 eps X Q22 eps
 
-# global atribut h4
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q22 _ M Q22 P
-Q22 _ M Q22 Q
-Q22 _ M Q22 R
-Q22 _ M Q22 P_Q
-Q22 _ M Q22 P_R
-Q22 _ M Q22 Q_P
-Q22 _ M Q22 Q_R
-Q22 _ M Q22 R_P
-Q22 _ M Q22 R_Q
-Q22 _ M Q22 P_Q_R
-Q22 _ M Q22 P_R_Q
-Q22 _ M Q22 Q_P_R
-Q22 _ M Q22 Q_R_P
-Q22 _ M Q22 R_P_Q
-Q22 _ M Q22 R_Q_P
-Q22 _ _ Q22 _
-Q22 _ _ Q22 eps
-#=== id=""
-Q22 id=" P Q22 X"
-Q22 " " Q22 eps
-#=== class=""
-Q22 class=" Q Q22 X"
-#=== style=""
-Q22 style=" R Q22 X"
-
 #====== </h4>
 Q22 </h4> </h4> Q3 eps
 
@@ -437,36 +156,6 @@ Q23 eps M Q23 eps
 Q23 > > Q23 eps
 Q23 % X Q23 X
 Q23 eps X Q23 eps
-
-# global atribut h5
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q23 _ M Q23 P
-Q23 _ M Q23 Q
-Q23 _ M Q23 R
-Q23 _ M Q23 P_Q
-Q23 _ M Q23 P_R
-Q23 _ M Q23 Q_P
-Q23 _ M Q23 Q_R
-Q23 _ M Q23 R_P
-Q23 _ M Q23 R_Q
-Q23 _ M Q23 P_Q_R
-Q23 _ M Q23 P_R_Q
-Q23 _ M Q23 Q_P_R
-Q23 _ M Q23 Q_R_P
-Q23 _ M Q23 R_P_Q
-Q23 _ M Q23 R_Q_P
-Q23 _ _ Q23 _
-Q23 _ _ Q23 eps
-#=== id=""
-Q23 id=" P Q23 X"
-Q23 " " Q23 eps
-#=== class=""
-Q23 class=" Q Q23 X"
-#=== style=""
-Q23 style=" R Q23 X"
 
 #====== </h5>
 Q23 </h5> </h5> Q3 eps
@@ -478,36 +167,6 @@ Q24 > > Q24 eps
 Q24 % X Q24 X
 Q24 eps X Q24 eps
 
-# global atribut h6
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q24 _ M Q24 P
-Q24 _ M Q24 Q
-Q24 _ M Q24 R
-Q24 _ M Q24 P_Q
-Q24 _ M Q24 P_R
-Q24 _ M Q24 Q_P
-Q24 _ M Q24 Q_R
-Q24 _ M Q24 R_P
-Q24 _ M Q24 R_Q
-Q24 _ M Q24 P_Q_R
-Q24 _ M Q24 P_R_Q
-Q24 _ M Q24 Q_P_R
-Q24 _ M Q24 Q_R_P
-Q24 _ M Q24 R_P_Q
-Q24 _ M Q24 R_Q_P
-Q24 _ _ Q24 _
-Q24 _ _ Q24 eps
-#=== id=""
-Q24 id=" P Q24 X"
-Q24 " " Q24 eps
-#=== class=""
-Q24 class=" Q Q24 X"
-#=== style=""
-Q24 style=" R Q24 X"
-
 #====== </h6>
 Q24 </h6> </h6> Q3 eps
 
@@ -517,36 +176,6 @@ Q25 > > Q25 eps
 Q25 eps M Q25 eps
 Q25 % X Q25 X
 Q25 eps X Q25 eps
-
-# global atribut p
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q25 _ M Q25 P
-Q25 _ M Q25 Q
-Q25 _ M Q25 R
-Q25 _ M Q25 P_Q
-Q25 _ M Q25 P_R
-Q25 _ M Q25 Q_P
-Q25 _ M Q25 Q_R
-Q25 _ M Q25 R_P
-Q25 _ M Q25 R_Q
-Q25 _ M Q25 P_Q_R
-Q25 _ M Q25 P_R_Q
-Q25 _ M Q25 Q_P_R
-Q25 _ M Q25 Q_R_P
-Q25 _ M Q25 R_P_Q
-Q25 _ M Q25 R_Q_P
-Q25 _ _ Q25 _
-Q25 _ _ Q25 eps
-#=== id=""
-Q25 id=" P Q22 X"
-Q25 " " Q22 eps
-#=== class=""
-Q25 class=" Q Q22 X"
-#=== style=""
-Q25 style=" R Q22 X"
 
 #====== </p>
 Q25 </p> </p> Q3 eps
@@ -558,432 +187,62 @@ Q26 eps M Q26 eps
 Q26 % X Q26 X
 Q26 eps X Q26 eps
 
-# global atribut br
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q26 _ M Q26 P
-Q26 _ M Q26 Q
-Q26 _ M Q26 R
-Q26 _ M Q26 P_Q
-Q26 _ M Q26 P_R
-Q26 _ M Q26 Q_P
-Q26 _ M Q26 Q_R
-Q26 _ M Q26 R_P
-Q26 _ M Q26 R_Q
-Q26 _ M Q26 P_Q_R
-Q26 _ M Q26 P_R_Q
-Q26 _ M Q26 Q_P_R
-Q26 _ M Q26 Q_R_P
-Q26 _ M Q26 R_P_Q
-Q26 _ M Q26 R_Q_P
-Q26 _ _ Q26 _
-Q26 _ _ Q26 eps
-#=== id=""
-Q26 id=" P Q26 X"
-Q26 " " Q26 eps
-#=== class=""
-Q26 class=" Q Q26 X"
-#=== style=""
-Q26 style=" R Q4 X"
-
 #====== <em>
-Q4 <em Z4 Q16 M>X</em>Z4
+Q3 <em D Q16 M>X</em>D
 Q16 > > Q16 eps
 Q16 eps M Q16 eps
 Q16 % X Q16 X
 Q16 eps X Q16 eps
 
-# global atribut em
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q16 _ M Q16 P
-Q16 _ M Q16 Q
-Q16 _ M Q16 R
-Q16 _ M Q16 P_Q
-Q16 _ M Q16 P_R
-Q16 _ M Q16 Q_P
-Q16 _ M Q16 Q_R
-Q16 _ M Q16 R_P
-Q16 _ M Q16 R_Q
-Q16 _ M Q16 P_Q_R
-Q16 _ M Q16 P_R_Q
-Q16 _ M Q16 Q_P_R
-Q16 _ M Q16 Q_R_P
-Q16 _ M Q16 R_P_Q
-Q16 _ M Q16 R_Q_P
-Q16 _ _ Q16 _
-Q16 _ _ Q16 eps
-#=== id=""
-Q16 id=" P Q16 X"
-Q16 " " Q16 eps
-#=== class=""
-Q16 class=" Q Q16 X"
-#=== style=""
-Q16 style=" R Q16 X"
-
 #====== </em>
-Q16 </em> </em> Q4 eps
+Q16 </em> </em> Q3 eps
 
 #====== <b>
-Q4 <b Z4 Q17 M>X</b>Z4
+Q3 <b D Q17 M>X</b>D
 Q17 > > Q17 eps
 Q17 eps M Q17 eps
 Q17 % X Q17 X
 Q17 eps X Q17 eps
 
-# global atribut b
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q17 _ M Q17 P
-Q17 _ M Q17 Q
-Q17 _ M Q17 R
-Q17 _ M Q17 P_Q
-Q17 _ M Q17 P_R
-Q17 _ M Q17 Q_P
-Q17 _ M Q17 Q_R
-Q17 _ M Q17 R_P
-Q17 _ M Q17 R_Q
-Q17 _ M Q17 P_Q_R
-Q17 _ M Q17 P_R_Q
-Q17 _ M Q17 Q_P_R
-Q17 _ M Q17 Q_R_P
-Q17 _ M Q17 R_P_Q
-Q17 _ M Q17 R_Q_P
-Q17 _ _ Q17 _
-Q17 _ _ Q17 eps
-#=== id=""
-Q17 id=" P Q17 X"
-Q17 " " Q17 eps
-#=== class=""
-Q17 class=" Q Q17 X"
-#=== style=""
-Q17 style=" R Q17 X"
-
 #====== </b>
-Q17 </b> </b> Q4 eps
+Q17 </b> </b> Q3 eps
 
 #====== <abbr>
-Q4 <abbr Z4 Q18 M>X</abbr>Z4
+Q3 <abbr D Q18 M>X</abbr>D
 Q18 > > Q18 eps
 Q18 eps M Q18 eps
 Q18 % X Q18 X
 Q18 eps X Q18 eps
 
-# global atribut abbr
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q18 _ M Q18 P
-Q18 _ M Q18 Q
-Q18 _ M Q18 R
-Q18 _ M Q18 P_Q
-Q18 _ M Q18 P_R
-Q18 _ M Q18 Q_P
-Q18 _ M Q18 Q_R
-Q18 _ M Q18 R_P
-Q18 _ M Q18 R_Q
-Q18 _ M Q18 P_Q_R
-Q18 _ M Q18 P_R_Q
-Q18 _ M Q18 Q_P_R
-Q18 _ M Q18 Q_R_P
-Q18 _ M Q18 R_P_Q
-Q18 _ M Q18 R_Q_P
-Q18 _ _ Q18 _
-Q18 _ _ Q18 eps
-#=== id=""
-Q18 id=" P Q18 X"
-Q18 " " Q18 eps
-#=== class=""
-Q18 class=" Q Q18 X"
-#=== style=""
-Q18 style=" R Q18 X"
-
 #====== </abbr>
-Q18 </abbr> </abbr> Q4 eps
+Q18 </abbr> </abbr> Q3 eps
 
 #====== <strong>
-Q4 <strong Z4 Q19 M>X</strong>Z4
+Q3 <strong D Q19 M>X</strong>D
 Q19 > > Q19 eps
 Q19 eps M Q19 eps
 Q19 % X Q19 X
 Q19 eps X Q19 eps
-
-# global atribut strong
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q19 _ M Q19 P
-Q19 _ M Q19 Q
-Q19 _ M Q19 R
-Q19 _ M Q19 P_Q
-Q19 _ M Q19 P_R
-Q19 _ M Q19 Q_P
-Q19 _ M Q19 Q_R
-Q19 _ M Q19 R_P
-Q19 _ M Q19 R_Q
-Q19 _ M Q19 P_Q_R
-Q19 _ M Q19 P_R_Q
-Q19 _ M Q19 Q_P_R
-Q19 _ M Q19 Q_R_P
-Q19 _ M Q19 R_P_Q
-Q19 _ M Q19 R_Q_P
-Q19 _ _ Q19 _
-Q19 _ _ Q19 eps
-#=== id=""
-Q19 id=" P Q19 X"
-Q19 " " Q19 eps
-#=== class=""
-Q19 class=" Q Q19 X"
-#=== style=""
-Q19 style=" R Q19 X"
 
 #====== </strong>
-Q19 </strong> </strong> Q4 eps
+Q19 </strong> </strong> Q3 eps
 
 #====== <small>
-Q4 <small Z4 Q19 M>X</small>Z4
+Q3 <small D Q19 M>X</small>D
 Q19 > > Q19 eps
 Q19 eps M Q19 eps
 Q19 % X Q19 X
 Q19 eps X Q19 eps
 
-# global atribut small
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q19 _ M Q19 P
-Q19 _ M Q19 Q
-Q19 _ M Q19 R
-Q19 _ M Q19 P_Q
-Q19 _ M Q19 P_R
-Q19 _ M Q19 Q_P
-Q19 _ M Q19 Q_R
-Q19 _ M Q19 R_P
-Q19 _ M Q19 R_Q
-Q19 _ M Q19 P_Q_R
-Q19 _ M Q19 P_R_Q
-Q19 _ M Q19 Q_P_R
-Q19 _ M Q19 Q_R_P
-Q19 _ M Q19 R_P_Q
-Q19 _ M Q19 R_Q_P
-Q19 _ _ Q19 _
-Q19 _ _ Q19 eps
-#=== id=""
-Q19 id=" P Q19 X"
-Q19 " " Q19 eps
-#=== class=""
-Q19 class=" Q Q19 X"
-#=== style=""
-Q19 style=" R Q19 X"
-
 #====== </small>
-Q19 </small> </small> Q4 eps
+Q19 </small> </small> Q3 eps
 
 #====== <hr>
-Q4 <hr D Q15 M>D
-Q15 > > Q4 eps
+Q3 <hr D Q15 M>D
+Q15 > > Q3 eps
 Q15 eps M Q15 eps
 Q15 % X Q15 X
 Q15 eps X Q15 eps
-
-# global atribut hr
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q15 _ M Q15 P
-Q15 _ M Q15 Q
-Q15 _ M Q15 R
-Q15 _ M Q15 P_Q
-Q15 _ M Q15 P_R
-Q15 _ M Q15 Q_P
-Q15 _ M Q15 Q_R
-Q15 _ M Q15 R_P
-Q15 _ M Q15 R_Q
-Q15 _ M Q15 P_Q_R
-Q15 _ M Q15 P_R_Q
-Q15 _ M Q15 Q_P_R
-Q15 _ M Q15 Q_R_P
-Q15 _ M Q15 R_P_Q
-Q15 _ M Q15 R_Q_P
-Q15 _ _ Q15 _
-Q15 _ _ Q15 eps
-#=== id=""
-Q15 id=" P Q15 X"
-Q15 " " Q15 eps
-#=== class=""
-Q15 class=" Q Q15 X"
-#=== style=""
-Q15 style=" R Q15 X"
-
-#====== <table>
-Q4 <table Z4 Q20 M>N</table>Z4
-Q20 > > Q20 eps
-Q20 eps M Q20 eps
-Q20 % X Q20 X
-Q20 eps X Q20 eps
-
-# global atribut table
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q20 _ M Q20 P
-Q20 _ M Q20 Q
-Q20 _ M Q20 R
-Q20 _ M Q20 P_Q
-Q20 _ M Q20 P_R
-Q20 _ M Q20 Q_P
-Q20 _ M Q20 Q_R
-Q20 _ M Q20 R_P
-Q20 _ M Q20 R_Q
-Q20 _ M Q20 P_Q_R
-Q20 _ M Q20 P_R_Q
-Q20 _ M Q20 Q_P_R
-Q20 _ M Q20 Q_R_P
-Q20 _ M Q20 R_P_Q
-Q20 _ M Q20 R_Q_P
-Q20 _ _ Q20 _
-Q20 _ _ Q20 eps
-#=== id=""
-Q20 id=" P Q20 X"
-Q20 " " Q20 eps
-#=== class=""
-Q20 class=" Q Q20 X"
-#=== style=""
-Q20 style=" R Q20 X"
-
-#========= <tr>
-Q20 <tr N Q21 M>T</tr>N
-Q21 > > Q21 eps
-Q21 eps M Q21 eps
-Q21 % X Q21 X
-Q21 eps X Q21 eps
-
-# global atribut tr
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q21 _ M Q21 P
-Q21 _ M Q21 Q
-Q21 _ M Q21 R
-Q21 _ M Q21 P_Q
-Q21 _ M Q21 P_R
-Q21 _ M Q21 Q_P
-Q21 _ M Q21 Q_R
-Q21 _ M Q21 R_P
-Q21 _ M Q21 R_Q
-Q21 _ M Q21 P_Q_R
-Q21 _ M Q21 P_R_Q
-Q21 _ M Q21 Q_P_R
-Q21 _ M Q21 Q_R_P
-Q21 _ M Q21 R_P_Q
-Q21 _ M Q21 R_Q_P
-Q21 _ _ Q21 _
-Q21 _ _ Q21 eps
-#=== id=""
-Q21 id=" P Q21 X"
-Q21 " " Q21 eps
-#=== class=""
-Q21 class=" Q Q21 X"
-#=== style=""
-Q21 style=" R Q21 X"
-
-#========= <td>
-Q21 <td T Q22 M>X</td>T
-Q22 > > Q22 eps
-Q22 eps M Q22 eps
-Q22 % X Q22 X
-Q22 eps X Q22 eps
-
-# global atribut td
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q22 _ M Q22 P
-Q22 _ M Q22 Q
-Q22 _ M Q22 R
-Q22 _ M Q22 P_Q
-Q22 _ M Q22 P_R
-Q22 _ M Q22 Q_P
-Q22 _ M Q22 Q_R
-Q22 _ M Q22 R_P
-Q22 _ M Q22 R_Q
-Q22 _ M Q22 P_Q_R
-Q22 _ M Q22 P_R_Q
-Q22 _ M Q22 Q_P_R
-Q22 _ M Q22 Q_R_P
-Q22 _ M Q22 R_P_Q
-Q22 _ M Q22 R_Q_P
-Q22 _ _ Q22 _
-Q22 _ _ Q22 eps
-#=== id=""
-Q22 id=" P Q22 X"
-Q22 " " Q22 eps
-#=== class=""
-Q22 class=" Q Q22 X"
-#=== style=""
-Q22 style=" R Q22 X"
-
-#========= <th>
-Q25 <th S Q25 M>X</hd>S
-Q25 > > Q25 eps
-Q25 eps M Q25 eps
-Q25 % X Q25 X
-Q25 eps X Q25 eps
-
-# global atribut td
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q25 _ M Q25 P
-Q25 _ M Q25 Q
-Q25 _ M Q25 R
-Q25 _ M Q25 P_Q
-Q25 _ M Q25 P_R
-Q25 _ M Q25 Q_P
-Q25 _ M Q25 Q_R
-Q25 _ M Q25 R_P
-Q25 _ M Q25 R_Q
-Q25 _ M Q25 P_Q_R
-Q25 _ M Q25 P_R_Q
-Q25 _ M Q25 Q_P_R
-Q25 _ M Q25 Q_R_P
-Q25 _ M Q25 R_P_Q
-Q25 _ M Q25 R_Q_P
-Q25 _ _ Q25 _
-Q25 _ _ Q25 eps
-#=== id=""
-Q25 id=" P Q22 X"
-Q25 " " Q22 eps
-#=== class=""
-Q25 class=" Q Q22 X"
-#=== style=""
-Q25 style=" R Q22 X"
-
-#========= </th>
-Q25 </th> </th> Q22 eps
-
-#========= </td>
-Q22 </td> </td> Q21 eps
-
-#========= </tr>
-Q21 </tr> </tr> Q20 eps
-
-#====== </table>
-Q20 </table> </table> Q4 eps
 
 #====== <link rel="" href=""> 
 # State Q23
@@ -996,7 +255,7 @@ Q23 _ _ Q23 _
 Q23 _ _ Q23 eps
 Q23 eps y Q23 eps
 Q23 eps M Q23 eps
-Q23 > > Q4 eps
+Q23 > > Q3 eps
 Q23 % X Q23 X   
 Q23 eps X Q23 eps
 #========= rel=""
@@ -1005,36 +264,6 @@ Q23 " " Q23 eps
 #============ href=""
 Q23 href=" Q23 X"
 Q23 " " Q23 eps
-
-# global atribut link
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q23 _ M Q23 P
-Q23 _ M Q23 Q
-Q23 _ M Q23 R
-Q23 _ M Q23 P_Q
-Q23 _ M Q23 P_R
-Q23 _ M Q23 Q_P
-Q23 _ M Q23 Q_R
-Q23 _ M Q23 R_P
-Q23 _ M Q23 R_Q
-Q23 _ M Q23 P_Q_R
-Q23 _ M Q23 P_R_Q
-Q23 _ M Q23 Q_P_R
-Q23 _ M Q23 Q_R_P
-Q23 _ M Q23 R_P_Q
-Q23 _ M Q23 R_Q_P
-Q23 _ _ Q23 _
-Q23 _ _ Q23 eps
-#=== id=""
-Q23 id=" P Q23 X"
-Q23 " " Q23 eps
-#=== class=""
-Q23 class=" Q Q23 X"
-#=== style=""
-Q23 style=" R Q23 X"
 
 #====== <script src="">
 # state Q24
@@ -1053,75 +282,15 @@ Q24 " " Q24 eps
 Q24 % X Q24 X
 Q24 eps X Q24 eps
 
-# global atribut script
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q24 _ M Q24 P
-Q24 _ M Q24 Q
-Q24 _ M Q24 R
-Q24 _ M Q24 P_Q
-Q24 _ M Q24 P_R
-Q24 _ M Q24 Q_P
-Q24 _ M Q24 Q_R
-Q24 _ M Q24 R_P
-Q24 _ M Q24 R_Q
-Q24 _ M Q24 P_Q_R
-Q24 _ M Q24 P_R_Q
-Q24 _ M Q24 Q_P_R
-Q24 _ M Q24 Q_R_P
-Q24 _ M Q24 R_P_Q
-Q24 _ M Q24 R_Q_P
-Q24 _ _ Q24 _
-Q24 _ _ Q24 eps
-#=== id=""
-Q24 id=" P Q24 X"
-Q24 " " Q24 eps
-#=== class=""
-Q24 class=" Q Q24 X"
-#=== style=""
-Q24 style=" R Q24 X"
-
 #====== </script>
 Q24 </script> </script> Q28 eps
 
 #====== <div>
-Q28 <div Z4 Q28 M>X</div>Z4
+Q28 <div D Q28 M>X</div>D
 Q28 > > Q28 eps
 Q28 eps M Q28 eps
 Q28 % X Q28 X
 Q28 eps X Q28 eps
-
-# global atribut div
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q28 _ M Q28 P
-Q28 _ M Q28 Q
-Q28 _ M Q28 R
-Q28 _ M Q28 P_Q
-Q28 _ M Q28 P_R
-Q28 _ M Q28 Q_P
-Q28 _ M Q28 Q_R
-Q28 _ M Q28 R_P
-Q28 _ M Q28 R_Q
-Q28 _ M Q28 P_Q_R
-Q28 _ M Q28 P_R_Q
-Q28 _ M Q28 Q_P_R
-Q28 _ M Q28 Q_R_P
-Q28 _ M Q28 R_P_Q
-Q28 _ M Q28 R_Q_P
-Q28 _ _ Q28 _
-Q28 _ _ Q28 eps
-#=== id=""
-Q28 id=" P Q28 X"
-Q28 " " Q28 eps
-#=== class=""
-Q28 class=" Q Q28 X"
-#=== style=""
-Q28 style=" R Q28 X"
 
 #====== </divr>
 Q28 </div> </div> Q27 eps
@@ -1143,36 +312,6 @@ Q27 " " Q27 eps
 Q27 % X Q27 X
 Q27 eps X Q27 eps
 
-# global atribut a
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q27 _ M Q27 P
-Q27 _ M Q27 Q
-Q27 _ M Q27 R
-Q27 _ M Q27 P_Q
-Q27 _ M Q27 P_R
-Q27 _ M Q27 Q_P
-Q27 _ M Q27 Q_R
-Q27 _ M Q27 R_P
-Q27 _ M Q27 R_Q
-Q27 _ M Q27 P_Q_R
-Q27 _ M Q27 P_R_Q
-Q27 _ M Q27 Q_P_R
-Q27 _ M Q27 Q_R_P
-Q27 _ M Q27 R_P_Q
-Q27 _ M Q27 R_Q_P
-Q27 _ _ Q27 _
-Q27 _ _ Q27 eps
-#=== id=""
-Q27 id=" P Q27 X"
-Q27 " " Q27 eps
-#=== class=""
-Q27 class=" Q Q27 X"
-#=== style=""
-Q27 style=" R Q27 X"
-
 #====== </a>
 Q27 </a> </a> Q26 eps
 
@@ -1187,7 +326,7 @@ Q26 _ _ Q26 _
 Q26 _ _ Q26 eps
 Q26 eps v Q26 eps
 Q26 eps M Q26 eps
-Q26 > > Q4 eps
+Q26 > > Q3 eps
 Q26 % X Q26 X   
 Q26 eps X Q26 eps
 #========= src=""
@@ -1197,38 +336,8 @@ Q26 " " Q26 eps
 Q26 alt=" Q26 X"
 Q26 " " Q26 eps
 
-# global atribut img
-# P = id
-# Q = class
-# R = style 
-# X = text content
-Q26 _ M Q26 P
-Q26 _ M Q26 Q
-Q26 _ M Q26 R
-Q26 _ M Q26 P_Q
-Q26 _ M Q26 P_R
-Q26 _ M Q26 Q_P
-Q26 _ M Q26 Q_R
-Q26 _ M Q26 R_P
-Q26 _ M Q26 R_Q
-Q26 _ M Q26 P_Q_R
-Q26 _ M Q26 P_R_Q
-Q26 _ M Q26 Q_P_R
-Q26 _ M Q26 Q_R_P
-Q26 _ M Q26 R_P_Q
-Q26 _ M Q26 R_Q_P
-Q26 _ _ Q26 _
-Q26 _ _ Q26 eps
-#=== id=""
-Q26 id=" P Q26 X"
-Q26 " " Q26 eps
-#=== class=""
-Q26 class=" Q Q26 X"
-#=== style=""
-Q26 style=" R Q4 X"
-
 #====== <button type=""> type:{submit, reset, button}
-Q4 < Z4 Q30 b_v>XPZ4
+Q3 < D Q30 b_v>XPD
 Q30 b button Q30 eps
 Q30 _ _ Q30 _
 Q30 _ _ Q30 eps
@@ -1264,15 +373,15 @@ Q30 u u Q30 t
 Q30 t z Q30 o
 Q30 o o Q30 n
 Q30 n n Q30 >
-Q30 > > Q4 eps
+Q30 > > Q3 eps
 
 #====== <form action="" method="">
 # STATE Q31
 # A = action
 # B = method
 # C = method content
-Q4 < Z4 Q31 f_A_B>XQZ4
-Q4 < Z4 Q31 f_A_B>XQZ4
+Q3 < D Q31 f_A_B>XQD
+Q3 < D Q31 f_A_B>XQD
 Q31 f f Q31 o
 Q31 o o Q31 r
 Q31 r r Q31 m
@@ -1321,13 +430,13 @@ Q31 f f Q31 o
 Q31 o o Q31 r
 Q31 r r Q31 m
 Q31 m m Q31 >
-Q31 > > Q4 eps
+Q31 > > Q3 eps
 
 #====== <input type=""> type: {text, password, email, number, checkbox}
 # STATE Q32
 # A = type
 # B = type content
-Q4 < Z4 Q32 input_A>Z4
+Q3 < D Q32 input_A>D
 Q32 i i Q32 eps
 Q32 n n Q32 eps
 Q32 p p Q32 eps
@@ -1335,7 +444,7 @@ Q32 u u Q32 eps
 Q32 t t Q32 eps
 Q32 _ _ Q32 _
 Q32 _ _ Q32 eps
-Q32 > > Q4 eps
+Q32 > > Q3 eps
 
 #========= type="" type: {text, password, email, number, checkbox}
 Q32 eps A Q32 eps
@@ -1386,3 +495,7 @@ Q3 </body> </body> Q1 eps
 
 # </html>
 Q1 </html> </html> Q99 eps
+
+
+# GLOBAL ATRIBUT
+# ...
