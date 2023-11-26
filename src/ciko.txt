@@ -1,612 +1,140 @@
-Z = START_STATE_PROGRAM
-Z1 = Head tag
-Z2 = Body tag
-Z3 = inside Head tag
-Z4 = inside Body tag
-
-Q = start state with no HTML tag
-Q1 = HTML tag
-Q2 = head tag
-Q3 = body tag
-Q4 = inside body tag
-Q5 = inside link tag
-Q6 = inside script tag
-Q7 = inside div tag
-Q8 = inside a tag
-Q9 = inside img tag
-Q10 = inside button tag
-Q11 = inside form tag
-Q12 = inside input tag
-
-A = </html>
-B = </head>
-C = </body>
-D = </title>
-E = </link>
-F = </script>
-G1 = </h1>
-G2 = </h2>
-G3 = </h3>
-G4 = </h4>
-G5 = </h5>
-G6 = </h6>
-H = </p>
-I = </em>
-J = </b>
-K = </abbr>
-L = </small>
-M = </div>
-N = </a>
-O = </img>
-P = </button>
-Q = </form>
-
-t = method
-u = action
-v = type
-w = src
-x = alt
-y = href
-z = rel
-
-W = inside div
-X = content 
-Y = tag atribut
-
-< = Open Brackets
-> = Close Brackets
-/ = Slash ("/")
-eps = epsilon
-_ = spasi
-% = Sigma
-
 # Start State Q
 # Start Stack Z
 
 # <html>
 # STATE Q
-# A = </html>
 # Z1 = head
 # Z2 = body
-Q < Z Q aZ1Z2A
-Q h h Q t
-Q t t Q m
-Q m m Q l
-Q l l Q >
+# M global atribut
+Q <html Z Q M>Z1Z2</html>
+Q eps M Q eps
 Q > > Q1 eps
+
+# global atribut html 
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q _ M Q P
+Q _ M Q Q
+Q _ M Q R
+Q _ M Q P_Q
+Q _ M Q P_R
+Q _ M Q Q_P
+Q _ M Q Q_R
+Q _ M Q R_P
+Q _ M Q R_Q
+Q _ M Q P_Q_R
+Q _ M Q P_R_Q
+Q _ M Q Q_P_R
+Q _ M Q Q_R_P
+Q _ M Q R_P_Q
+Q _ M Q R_Q_P
+Q _ _ Q eps
+Q _ _ Q _
+#=== id=""
+Q id=" P Q X"
+Q % X Q X
+Q eps X Q eps
+Q " " Q eps
+#=== class=""
+Q class=" Q Q X"
+#=== style=""
+Q style=" R Q X"
 
 #=== <head>
 # STATE Q1
-# B = </html>
-# Z2 = inside head tag
-Q1 < Z1 Q1 hZ3B
-Q1 h h Q1 e
-Q1 e e Q1 a
-Q1 a a Q1 d
-Q1 d d Q1 >
+# Z3 = inside head html tag
+# M = global atribut
+Q1 <head Z1 Q1 M>Z3</head>
+Q1 eps M Q1 eps
 Q1 > > Q2 eps
 Q2 eps Z3 Q2 eps
 
+# global atribut head
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q1 _ M Q1 P
+Q1 _ M Q1 Q
+Q1 _ M Q1 R
+Q1 _ M Q1 P_Q
+Q1 _ M Q1 P_R
+Q1 _ M Q1 Q_P
+Q1 _ M Q1 Q_R
+Q1 _ M Q1 R_P
+Q1 _ M Q1 R_Q
+Q1 _ M Q1 P_Q_R
+Q1 _ M Q1 P_R_Q
+Q1 _ M Q1 Q_P_R
+Q1 _ M Q1 Q_R_P
+Q1 _ M Q1 R_P_Q
+Q1 _ M Q1 R_Q_P
+Q1 _ _ Q1 _
+Q1 _ _ Q1 eps
+#=== id=""
+Q1 id=" P Q1 X"
+Q1 % X Q1 X
+Q1 eps X Q1 eps
+Q1 " " Q1 eps
+#=== class=""
+Q1 class=" Q Q1 X"
+#=== style=""
+Q1 style=" R Q1 X"
+
 #====== <title>
 # Z3 = inside head tag
-# D = </title>
-Q2 < Z3 Q2 tXDZ3
-Q2 t t Q2 i
-Q2 i i Q2 t
-Q2 l l Q2 l
-Q2 e e Q2 >
-Q2 > > Q2 eps
-Q2 % X Q2 X
-Q2 eps X Q2 eps
+# M = global atribut
+Q2 <title Z3 Q13 M>X</title>Z3
+Q13 eps X Q13 eps
+Q13 eps M Q13 eps
+Q13 > > Q13 eps
+Q13 % X Q13 X
+Q13 eps X Q13 eps
 
-#====== </title>
-Q2 < D Q2 /
-Q2 / / Q2 t
-Q2 t t Q2 i
-Q2 i i Q2 t
-Q2 t t Q2 l
-Q2 l l Q2 e
-Q2 e e Q2 >
-Q2 > > Q2 eps
-
-#====== <link rel="" href=""> 
-# State Q5
-# z = rel
-# y = href
-Q2 < Z3 Q5 link_z_y>Z3
-Q2 < Z3 Q5 link_y_z>Z3
-Q5 l l Q5 eps
-Q5 i i Q5 eps
-Q5 n n Q5 eps
-Q5 k k Q5 eps
-Q5 _ _ Q5 _
-Q5 _ _ Q5 eps
-Q5 eps y Q5 eps
-Q5 > > Q2 eps
-Q5 % X Q5 X   
-Q5 eps X Q5 eps
-#========= rel=""
-Q5 r z Q5 el=
-Q5 e e Q5 eps
-Q5 = = Q5 "X"
-Q5 " " Q5 eps
-#============ href=""
-Q5 h y Q5 ref
-Q5 r r Q5 eps
-Q5 e e Q5 eps
-Q5 f f Q5 =
-Q5 = = Q5 "X"
-Q5 " " Q5 eps
-
-#====== <script src="">
-# state Q6
-# w = src
-# A = </script>
-Q2 < Z3 Q6 s_w>XAZ3
-Q6 s s Q6 cri
-Q6 c c Q6 r
-Q6 r r Q6 eps
-Q6 i i Q6 p
-Q6 p p Q6 t
-Q6 t t Q6 eps
-Q6 _ _ Q6 _
-Q6 _ _ Q6 eps
-Q6 eps y Q6 eps
-Q6 > > Q2 eps
-Q6 % X Q6 X 
-Q6 eps X Q6 eps
-#========= src=""
-Q6 s w Q6 rc
-Q6 c c Q6 =
-Q6 = = Q6 "X"
-Q6 " " Q6 eps
-
-#====== </script>
-Q6 < A Q6 /
-Q6 / / Q6 s
-Q6 s s Q6 c
-Q6 c c Q6 r
-Q6 r r Q6 i
-Q6 i i Q6 p
-Q6 p p Q6 t
-Q6 t t Q6 >
-Q6 > > Q2 eps
 
 #=== </head>
-Q2 < B Q2 /
-Q2 / /Q2 h
-Q2 h h Q2 e
-Q2 e e Q2 a
-Q2 a a Q2 d
-Q2 d d Q2 >
-Q2 > > Q3 eps
+Q2 </head> </head> Q3 eps
 
-#=== <body>
-Q3 < Z2 Q3 bZ4C
-Q3 b b Q3 o
-Q3 o o Q3 d
-Q3 d d Q3 y
-Q3 y y Q3 >
-Q3 > > Q4 eps
 
-#====== <h1>
-Q4 < Z4 Q4 hXG1Z4
-Q4 h h Q4 1
-Q4 1 1 Q4 >
-#====== <h2>
-Q4 < Z4 Q4 hXG2Z4
-Q4 h h Q4 2
-Q4 2 2 Q4 >
-#====== <h3>
-Q4 < Z4 Q4 hXG3Z4
-Q4 h h Q4 3
-Q4 3 3 Q4 >
-#====== <h4>
-Q4 < Z4 Q4 hXG4Z4
-Q4 h h Q4 4
-Q4 4 4 Q4 >
-#====== <h5>
-Q4 < Z4 Q4 hXG5Z4
-Q4 h h Q4 5
-Q4 5 5 Q4 >
-#====== <h6>
-Q4 < Z4 Q4 hXG6Z4
-Q4 h h Q4 6
-Q4 6 6 Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
+# global atribut title
+# P = id
+# Q = class
+# R = style 
+# X = text content
+Q13 _ M Q13 P
+Q13 _ M Q13 Q
+Q13 _ M Q13 R
+Q13 _ M Q13 P_Q
+Q13 _ M Q13 P_R
+Q13 _ M Q13 Q_P
+Q13 _ M Q13 Q_R
+Q13 _ M Q13 R_P
+Q13 _ M Q13 R_Q
+Q13 _ M Q13 P_Q_R
+Q13 _ M Q13 P_R_Q
+Q13 _ M Q13 Q_P_R
+Q13 _ M Q13 Q_R_P
+Q13 _ M Q13 R_P_Q
+Q13 _ M Q13 R_Q_P
+Q13 _ _ Q13 _
+Q13 _ _ Q13 eps
+#=== id=""
+Q13 id=" P Q13 X"
+Q13 " " Q13 eps
+#=== class=""
+Q13 class=" Q Q13 X"
+#=== style=""
+Q13 style=" R Q13 X"
 
-#====== </h1> </h2> </h3> </h4> </h5> </h6>
-Q4 < G Q4 /
-Q4 / / Q4 h
-Q4 h h Q4 eps
-Q4 1 1 Q4 >
-Q4 2 2 Q4 >
-Q4 3 3 Q4 >
-Q4 4 4 Q4 >
-Q4 5 5 Q4 >
-Q4 6 6 Q4 >
-Q4 > > Q4 eps
+#====== </title>
+Q13 </title> </title> Q2 eps
 
-#====== <p>
-Q4 < Z4 Q4 pXHZ4
-Q4 p p Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
 
-#====== </p>
-Q4 < H Q4 /
-Q4 / / Q4 p
-Q4 p p Q4 >
-Q4 > > Q4 eps
-
-#====== <br>
-Q4 < Z4 Q4 b
-Q4 b b Q4 r
-Q4 r r Q4 >
-Q4 > > Q4 eps
-
-#====== <em>
-Q4 < Z4 Q4 eXIZ4
-Q4 e e Q4 m
-Q4 m m Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
-
-#====== </em>
-Q4 < I Q4 /
-Q4 / / Q4 e
-Q4 e e Q4 m
-Q4 m m Q4 >
-Q4 > > Q4 eps
-
-#====== <b>
-Q4 < Z4 Q4 bXJZ4
-Q4 b b Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
-
-#====== </b>
-Q4 < J Q4 /
-Q4 / / Q4 b
-Q4 b b Q4 >
-Q4 > > Q4 eps
-
-#====== <abbr>
-Q4 < Z4 Q4 aXKZ4
-Q4 a a Q4 b
-Q4 b b Q4 t
-Q4 b t Q4 r
-Q4 r r Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
-
-#====== </abbr>
-Q4 < K Q4 /
-Q4 / / Q4 a
-Q4 a a Q4 b
-Q4 b b Q4 t
-Q4 b t Q4 r
-Q4 r r Q4 >
-Q4 > > Q4 eps
-
-#====== <strong>
-Q4 < Z4 Q4 sXKZ4
-Q4 s s Q4 t
-Q4 t t Q4 r
-Q4 r r Q4 o
-Q4 o o Q4 n
-Q4 n n Q4 g
-Q4 g g Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
-
-#====== </strong>
-Q4 < K Q4 /
-Q4 / / Q4 s
-Q4 s s Q4 t
-Q4 t t Q4 r
-Q4 r r Q4 o
-Q4 o o Q4 n
-Q4 n n Q4 g
-Q4 g g Q4 >
-Q4 > > Q4 eps
-
-#====== <small>
-Q4 < Z4 Q4 sXLZ4
-Q4 s s Q4 m
-Q4 m m Q4 a
-Q4 a a Q4 l
-Q4 l l Q4 m
-Q4 l m Q4 >
-Q4 > > Q4 eps
-Q4 Sigma X Q4 X
-Q4 eps X Q4 eps
-
-#====== </small>
-Q4 < L Q4 /
-Q4 / / Q4 s
-Q4 s s Q4 m
-Q4 m m Q4 a
-Q4 a a Q4 l
-Q4 l l Q4 m
-Q4 l m Q4 >
-Q4 > > Q4 eps
-
-#====== <hr>
-Q4 < Z4 Q4 h
-Q4 h h Q4 r
-Q4 r r Q4 >
-Q4 > > Q4 eps
-
-#====== <div>
-Q4 < Z4 Q4 dWMZ4
-Q4 d d Q4 i
-Q4 i i Q4 v
-Q4 > > Q7 eps
-
-#====== </div>
-Q7 < M Q7 /
-Q7 / / Q7 d
-Q7 d d Q7 i
-Q7 i i Q7 v
-Q7 v v Q7 >
-Q7 > > Q4 eps
-
-#====== <a href="">
-Q4 < Z4 Q8 a_y>XNZ4
-Q8 a a Q8 eps
-Q8 _ _ Q8 _
-Q8 _ _ Q8 eps
-#========= endpoint
-Q8 y h Q8 r
-Q8 r r Q8 e
-Q8 e e Q8 f
-Q8 f f Q8 =
-Q8 = = Q8 "X"
-Q8 " " Q8 eps
-Q8 > > Q8 eps
-Q8 % X Q8 X
-Q8 eps X Q8 eps
-#============ href=""
-Q8 h y Q8 r
-Q8 r r Q8 e
-Q8 e e Q8 f
-Q8 f f Q8 =
-Q8 = = Q8 "X"
-Q8 " " Q8 eps
-
-#====== </a>
-Q8 < N Q8 /
-Q8 / / Q8 a
-Q8 a a Q8 >
-Q8 > > Q4 eps
-
-#====== <img src="" alt="">
-Q4 < Z4 Q9 i_w_x>XOZ4
-Q4 < Z4 Q9 i_x_w>XOZ4
-Q9 i i Q9 m
-Q9 m m Q9 g
-Q9 g g Q9 eps
-Q9 _ _ Q9 _
-Q9 _ _ Q9 eps
-Q9 > > Q9 eps
-Q9 % X Q9 X
-Q9 eps X Q9 eps
-#========= src=""
-Q9 s w Q9 r
-Q9 r r Q9 c
-Q9 c c Q9 =
-Q9 = = Q9 "X"
-Q9 " " Q9 eps
-#========= alt=""
-Q9 eps x Q9 eps
-Q9 a x Q9 l
-Q9 l l Q9 t
-Q9 t t Q9 =
-Q9 = = Q9 "X"
-Q9 " " Q9 eps
-
-#====== </img>
-Q9 < N Q9 /
-Q9 / / Q9 i
-Q9 i i Q9 m
-Q9 m m Q9 g
-Q9 g g Q9 >
-Q9 > > Q4 eps
-
-#====== <button type=""> type:{submit, reset, button}
-Q4 < Z4 Q10 b_v>XPZ4
-Q10 b b Q10 u
-Q10 u u Q10 t
-Q10 t t Q10 z
-Q10 t z Q10 o
-Q10 o o Q10 n
-Q10 n n Q10 eps
-Q10 _ _ Q10 _
-Q10 _ _ Q10 eps
-Q10 > > Q10 eps
-Q10 % X Q10 X
-Q10 eps X Q10 eps
-
-#========= type="A"  A:{submit, reset, button}
-Q10 eps v Q10 eps
-Q10 t v Q10 y
-Q10 y y Q10 p
-Q10 p p Q10 e
-Q10 e e Q10 =
-Q10 = = Q10 "A"
-Q10 " " Q10 eps
-#============ A submit
-Q10 s A Q10 ubmit
-Q10 u u Q10 eps
-Q10 b b Q10 eps
-Q10 m m Q10 eps
-Q10 i i Q10 eps
-Q10 t t Q10 eps
-#============ A reset
-Q10 r A Q10 eset
-Q10 e e Q10 eps
-Q10 s s Q10 eps
-#Q10 t t Q10 eps    dikomen karena sudah ada di sebelumnya
-#============ A button
-Q10 b A Q10 utton
-#Q10 b b Q10 eps
-#Q10 u u Q10 eps
-#Q10 t t Q10 eps
-Q10 o o Q10 eps
-Q10 n n Q10 eps
-
-#====== </button>
-Q10 < P Q10 /
-Q10 / / Q10 b
-Q10 b b Q10 u
-Q10 u u Q10 t
-Q10 t z Q10 o
-Q10 o o Q10 n
-Q10 n n Q10 >
-Q10 > > Q4 eps
-
-#====== <form action="" method="">
-# STATE Q11
-# A = action
-# B = method
-# C = method content
-Q4 < Z4 Q11 f_A_B>XQZ4
-Q4 < Z4 Q11 f_A_B>XQZ4
-Q11 f f Q11 o
-Q11 o o Q11 r
-Q11 r r Q11 m
-Q11 m m Q11 eps
-Q11 _ _ Q11 _
-Q11 _ _ Q11 eps
-Q11 > > Q11 eps
-Q11 % X Q11 X
-Q11 eps X Q11 eps
-
-#========= action=""
-Q11 eps A Q11 eps
-Q11 a A Q11 ction
-Q11 c c Q11 eps
-Q11 t t Q11 eps
-Q11 i i Q11 eps
-Q11 o o Q11 eps
-Q11 n n Q11 ="X"
-Q11 = = Q11 eps
-Q11 " " Q11 eps
-
-#========= method="" method: {POST, GET}
-Q11 eps B Q11 eps
-Q11 m B Q11 ethod
-Q11 e e Q11 eps
-#Q11 t t Q11 eps
-Q11 h h Q11 eps
-#Q11 o o Q11 eps
-Q11 d d Q11 ="C"
-Q11 = = Q11 eps
-Q11 " " Q11 eps
-#============ method="GET"
-Q11 G C Q11 E
-Q11 E E Q11 T
-Q11 T T Q11 eps
-#============ method="POST"
-Q11 P C Q11 O
-Q11 O O Q11 S
-Q11 S S Q11 T
-#Q11 T T Q11 eps
-
-#====== </form>
-Q11 < Q Q11 /
-Q11 / / Q11 f
-Q11 f f Q11 o
-Q11 o o Q11 r
-Q11 r r Q11 m
-Q11 m m Q11 >
-Q11 > > Q4 eps
-
-#====== <input type=""> type: {text, password, email, number, checkbox}
-# STATE Q12
-# A = type
-# B = type content
-Q4 < Z4 Q12 input_A>Z4
-Q12 i i Q12 eps
-Q12 n n Q12 eps
-Q12 p p Q12 eps
-Q12 u u Q12 eps
-Q12 t t Q12 eps
-Q12 _ _ Q12 _
-Q12 _ _ Q12 eps
-Q12 > > Q4 eps
-
-#========= type="" type: {text, password, email, number, checkbox}
-Q12 eps A Q12 eps
-Q12 t A Q12 ype
-Q12 y y Q12 eps
-#Q12 p p Q12 eps
-Q12 e e Q12 =
-Q12 = = Q12 "B"
-Q12 " " Q12 eps
-#============ type="text"
-Q12 t B Q12 ext
-#Q12 e e Q12 eps
-Q12 x x Q12 eps
-#Q12 t t Q12 eps
-#============ type="password"
-Q12 p B Q12 assword
-Q12 a a Q12 eps
-Q12 s s Q12 eps
-Q12 w w Q12 eps
-Q12 o o Q12 eps
-Q12 r r Q12 eps
-Q12 d d Q12 eps
-#============ type="email"
-Q12 e B Q12 mail
-Q12 m m Q12 eps
-#Q12 a a Q12 eps
-Q12 i i Q12 eps
-Q12 l l Q12 eps
-#============ type="number"
-Q12 n B Q12 umber
-Q12 u u Q12 eps
-#Q12 m m Q12 eps
-Q12 b b Q12 eps
-#Q12 e e Q12 eps
-#Q12 r r Q12 eps
-#============ type="checkbox"
-Q12 c B Q12 heckbox
-Q12 h h Q12 eps
-#Q12 e e Q12 eps
-Q12 c c Q12 eps
-#Q12 k k Q12 eps
-#Q12 b b Q12 eps
-#Q12 o o Q12 eps
-Q12 x x Q12 eps
 
 #=== </body>
-Q4 < C Q4 /
-Q4 / /Q4 b
-Q4 b b Q4 o
-Q4 o o Q4 d
-Q4 d d Q4 y
-Q4 y y Q4 >
-Q4 > > Q4 eps
+Q4 </body> </body> Q1 eps
 
 # </html>
-Q1 < A Q1 /
-Q1 / /Q1 h
-Q1 h h Q1 t
-Q1 t t Q1 m
-Q1 m m Q1 l
-Q1 l l Q1 >
-Q1 > > Q eps
-
-html
-head
-title
-body
+Q1 </html> </html> Q99 eps
