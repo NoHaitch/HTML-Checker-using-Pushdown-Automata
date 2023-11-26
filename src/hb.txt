@@ -144,7 +144,7 @@ Q5 eps X Q5 eps
 Q5 rel=" z Q5 X"
 Q5 " " Q5 eps
 #============ href=""
-Q5 href=" Q5 X"
+Q5 href=" X Q5 X"
 Q5 " " Q5 eps
 
 # global atribut link
@@ -234,7 +234,7 @@ Q2 </head> </head> Q3 eps
 # state Q3
 # Z4 = inside Body tag
 # M = global atribut
-Q3 <body Z2 Q3 M>Z4C
+Q3 <body Z2 Q3 M></body>
 Q3 eps M Q3 eps
 Q3 > > Q4 eps
 Q3 % X Q3 X
@@ -271,7 +271,7 @@ Q3 class=" Q Q3 X"
 Q3 style=" R Q3 X"
 
 #=== </body>
-Q3 </body> </body> Q1 eps
+Q4 </body> </body> Q1 eps
 
 # </html>
 Q1 </html> </html> Q99 eps
