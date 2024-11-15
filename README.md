@@ -4,11 +4,11 @@
 
 <br />
 <div align="center">
-  <h1 align="center">Tugas Besar IF2124 Teori Bahasa Formal dan Otomata</h1>
+  <h1 align="center"> HTML Checker using Pushdown Automata (PDA)</h1>
 
   <p align="center">
-    <h3> HTML Checker using Pushdown Automata (PDA)</h3>
-    <p>on Python langguage</p>
+    <h3>Tugas Besar IF2124 Teori Bahasa Formal dan Otomata</h3>
+    <p>using Python</p>
     <br />
     <a href="https://github.com/zultopia/Tubes-IF2124-TBFO/issues">Report Bug</a>
     ·
